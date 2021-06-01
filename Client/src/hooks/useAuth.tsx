@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 
 const code = new URLSearchParams(window.location.search).get("code");
 const homelink: any = "/";
@@ -12,20 +11,20 @@ export default function useAuth() {
 
   useEffect(() => {
     console.log(code);
+    if (code)
+      axios
+        .post("http://localhost:5000/login", { code: code })
+        .then((r) => {
+          console.log(r);
 
-    axios
-      .post("http://localhost:5000/login", { code: code })
-      .then((r) => {
-        console.log(r);
-
-        setAccessToken(r.data.accessToken);
-        setExpiresIn(r.data.expiresIn);
-        setRefreshToken(r.data.refreshToken);
-      })
-      .catch((err) => {
-        console.log(err);
-        window.location = homelink;
-      });
+          setAccessToken(r.data.accessToken);
+          setExpiresIn(r.data.expiresIn);
+          setRefreshToken(r.data.refreshToken);
+        })
+        .catch((err) => {
+          console.log(err);
+          window.location = homelink;
+        });
   }, []);
 
   return accessToken;
