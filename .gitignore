@@ -2,3 +2,6 @@
 # dependencies
 /Client/node_modules
 /Server/node_modules
+
+# production
+/my-app/build
