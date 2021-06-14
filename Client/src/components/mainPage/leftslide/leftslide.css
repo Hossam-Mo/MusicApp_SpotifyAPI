@@ -1,7 +1,7 @@
 .leftslide {
   background-color: black;
   width: 200px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 10px;
 
   display: flex;
@@ -21,4 +21,17 @@
   background-color: rgb(46, 46, 46);
   width: 100%;
   margin-top: 10px;
+}
+.leftslide_lists {
+  color: rgb(202, 202, 202);
+  padding: 10px;
+  cursor: pointer;
+}
+.leftslide_lists > div {
+  transition: color 0.2s ease-in-out;
+  padding: 15px;
+  font-size: 14px;
+}
+.leftslide_lists > div:hover {
+  color: white;
 }

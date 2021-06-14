@@ -3,7 +3,7 @@ import { IoAdd } from "react-icons/io5";
 import { VscLibrary } from "react-icons/vsc";
 import { AiTwotoneHeart, AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import LeftContant from "./leftContant/LeftContant";
-import db from "../../../firebase";
+import db, { serverTime } from "../../../firebase";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -21,6 +21,7 @@ interface user {
 
 interface lists {
   name: string;
+  id: string;
 }
 
 export default function Leftslide() {
@@ -28,20 +29,23 @@ export default function Leftslide() {
   const [listsSize, setListsSize] = useState(0);
   const [lists, setLists] = useState<lists[]>();
 
-  useEffect(() => {
-    console.log(lists);
-  }, [lists]);
-
   const addNewList = () => {
     if (user) {
       const lists = db.collection("users").doc(user.id).collection("lists");
+      // get the size of the lists
       lists
         .get()
         .then((lists) => {
           setListsSize(lists.size);
         })
         .catch((err) => console.log(err));
-      lists.add({ name: `Music list N${listsSize + 1}` });
+
+      // add the lists to the firestore
+
+      lists.add({
+        name: `Music list N${listsSize + 1}`,
+        timestamp: serverTime,
+      });
     }
   };
 
@@ -49,7 +53,7 @@ export default function Leftslide() {
     if (user) {
       const lists = db.collection("users").doc(user.id).collection("lists");
 
-      lists.onSnapshot((s) => {
+      lists.orderBy("timestamp", "asc").onSnapshot((s) => {
         setLists(
           s.docs.map((list) => {
             return { name: list.data().name, id: list.id };
@@ -57,7 +61,7 @@ export default function Leftslide() {
         );
       });
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="leftslide">
@@ -76,7 +80,7 @@ export default function Leftslide() {
 
       <div className="leftslide_lists">
         {lists?.map((list) => {
-          return <div>{list.name}</div>;
+          return <div key={list.id}>{list.name}</div>;
         })}
       </div>
     </div>
