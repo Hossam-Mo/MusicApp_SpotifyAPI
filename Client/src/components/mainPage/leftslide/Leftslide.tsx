@@ -8,14 +8,30 @@ import db from "../../../firebase";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
+interface img {
+  url: string;
+}
+
+interface user {
+  display_name: string;
+  email: string;
+  id: string;
+  images: img[];
+}
+
 export default function Leftslide() {
-  const user = useSelector((user) => user);
+  const user = useSelector((user: user) => user);
 
   useEffect(() => {
     console.log(user);
   }, [user]);
 
-  const addNewList = () => {};
+  const addNewList = () => {
+    if (user) {
+      const DBlists = db.collection("users").doc(user.id).collection("lists");
+      DBlists.add({ name: "the name of the list" });
+    }
+  };
 
   return (
     <div className="leftslide">

@@ -21,7 +21,7 @@ export default function MainPage() {
         .then((user) => {
           dispatch({
             type: get_user.type,
-            user: user,
+            user: user.body,
           });
         })
         .catch((err) => {
