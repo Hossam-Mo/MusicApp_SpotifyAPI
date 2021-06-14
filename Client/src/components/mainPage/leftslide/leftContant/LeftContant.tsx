@@ -8,9 +8,17 @@ interface props {
   onClick?: () => void;
 }
 
-export default function LeftContant({ Icon, contant, marginTop }: props) {
+export default function LeftContant({
+  Icon,
+  contant,
+  marginTop,
+  onClick,
+}: props) {
   return (
-    <div className={`leftContant ${marginTop && "leftContantTop"}`}>
+    <div
+      onClick={onClick}
+      className={`leftContant ${marginTop && "leftContantTop"}`}
+    >
       <Icon className="leftContant_icon"></Icon>
       <p>{contant}</p>
     </div>
