@@ -1,0 +1,27 @@
+.leftContant {
+  color: rgb(202, 202, 202);
+  display: flex;
+  align-items: center;
+
+  width: 90%;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.leftContant:hover {
+  color: white;
+}
+
+.leftContant_icon {
+  font-size: 20px;
+}
+
+.leftContant > p {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.leftContantTop {
+  margin-top: 20px;
+}

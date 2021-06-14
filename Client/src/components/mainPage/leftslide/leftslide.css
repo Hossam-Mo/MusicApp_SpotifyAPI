@@ -1,0 +1,24 @@
+.leftslide {
+  background-color: black;
+  width: 200px;
+  height: 100vh;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.leftslid_logo {
+  width: 133px;
+  margin-top: 25px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.leftSlide_line {
+  height: 1px;
+  background-color: rgb(46, 46, 46);
+  width: 100%;
+  margin-top: 10px;
+}
