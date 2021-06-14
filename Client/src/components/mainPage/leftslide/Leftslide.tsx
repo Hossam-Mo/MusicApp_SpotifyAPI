@@ -1,4 +1,3 @@
-import React from "react";
 import "./leftslide.css";
 
 import { IoAdd } from "react-icons/io5";
@@ -6,8 +5,16 @@ import { VscLibrary } from "react-icons/vsc";
 import { AiTwotoneHeart, AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import LeftContant from "./leftContant/LeftContant";
 import db from "../../../firebase";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function Leftslide() {
+  const user = useSelector((user) => user);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const addNewList = () => {};
 
   return (

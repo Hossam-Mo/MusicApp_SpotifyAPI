@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import SpotifyWebApi from "spotify-web-api-node";
 import useAuth from "../../hooks/useAuth";
+import { get_user } from "../../redux/actionTypes";
 import Leftslide from "./leftslide/Leftslide";
 
 const Spotfiy = new SpotifyWebApi({
@@ -9,20 +11,18 @@ const Spotfiy = new SpotifyWebApi({
 export default function MainPage() {
   const token = useAuth();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (token) {
       Spotfiy.setAccessToken(token);
-      Spotfiy.searchTracks("zayn")
-        .then((r) => {
-          console.log("this is", r);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
 
       Spotfiy.getMe()
-        .then((r) => {
-          console.log(r);
+        .then((user) => {
+          dispatch({
+            type: get_user.type,
+            user: user,
+          });
         })
         .catch((err) => {
           console.log(err);
