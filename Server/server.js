@@ -27,8 +27,8 @@ app.post("/login", (req, res) => {
           expiresIn: r.body.expires_in,
         });
       })
-      .catch((err) => {
-        res.json({ mess: err });
+      .catch(() => {
+        res.sendStatus(400);
       });
   } else {
     res.json({ mess: "the code is missing" });

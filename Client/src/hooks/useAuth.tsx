@@ -21,9 +21,8 @@ export default function useAuth() {
           setExpiresIn(r.data.expiresIn);
           setRefreshToken(r.data.refreshToken);
         })
-        .catch((err) => {
-          console.log(err);
-          window.location = homelink;
+        .catch(() => {
+          window.location.replace("/");
         });
   }, []);
 
