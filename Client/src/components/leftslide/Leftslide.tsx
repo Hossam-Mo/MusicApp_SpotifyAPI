@@ -24,8 +24,11 @@ interface lists {
   id: string;
 }
 
+interface state {
+  user: user;
+}
 export default function Leftslide() {
-  const user = useSelector((user: user) => user);
+  const user = useSelector((state: state) => state.user);
   const [listsSize, setListsSize] = useState(0);
   const [lists, setLists] = useState<lists[]>();
 
