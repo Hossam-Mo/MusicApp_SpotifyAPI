@@ -3,7 +3,7 @@ import { IoAdd } from "react-icons/io5";
 import { VscLibrary } from "react-icons/vsc";
 import { AiTwotoneHeart, AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import LeftContant from "./leftContant/LeftContant";
-import db, { serverTime } from "../../../firebase";
+import db, { serverTime } from "../../firebase";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
