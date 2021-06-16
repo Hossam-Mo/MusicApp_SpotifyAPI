@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CardsRows from "./cardsRows/CardsRows";
+import "./mainPage.css";
 
 export default function MainPage() {
   const Spotify = useSelector((state: any) => state.spotify);
@@ -15,7 +16,7 @@ export default function MainPage() {
         });
   }, [Spotify]);
   return (
-    <div>
+    <div className="mainPage">
       <CardsRows></CardsRows>
     </div>
   );

@@ -1,0 +1,69 @@
+.artistCard {
+  background-color: #181818;
+  width: 160px;
+  height: 234px;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background-color 0.3s ease-in;
+  cursor: pointer;
+}
+.artistCard_Main {
+  position: relative;
+  margin-bottom: 20px;
+}
+.artistCard_Main > button {
+  position: absolute;
+  left: 10px;
+  bottom: 0px;
+  border-radius: 50%;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out, bottom 0.4s ease-in-out,
+    transform 0.3s ease-in-out;
+  box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+}
+
+.artistCard_Main > button > svg {
+  font-size: 17px;
+  margin-left: 1px;
+}
+.artistCard_img {
+  width: 100%;
+  /* height: 65%; */
+  object-fit: cover;
+
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+}
+.artistCard > h3 {
+  color: white;
+}
+
+.artistCard > p {
+  color: #a7a7a7;
+  margin-top: 13px;
+  font-size: 12px;
+}
+
+.artistCard:hover {
+  background-color: #282828;
+}
+
+.artistCard:hover > .artistCard_Main > button {
+  opacity: 1;
+  bottom: 10px;
+  pointer-events: unset;
+}
+
+.artistCard_Main > button:hover {
+  transform: scale(1.1);
+}
