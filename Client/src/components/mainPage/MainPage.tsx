@@ -1,18 +1,22 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import CardsRows from "./cardsRows/CardsRows";
 
 export default function MainPage() {
-  const state = useSelector((state: any) => state.spotify);
+  const Spotify = useSelector((state: any) => state.spotify);
   useEffect(() => {
-    if (state)
-      state
-        .getMe()
+    if (Spotify)
+      Spotify.getMe()
         .then((user: any) => {
           console.log(user);
         })
         .catch((err: any) => {
           console.log(err);
         });
-  }, [state]);
-  return <div>hello</div>;
+  }, [Spotify]);
+  return (
+    <div>
+      <CardsRows></CardsRows>
+    </div>
+  );
 }
