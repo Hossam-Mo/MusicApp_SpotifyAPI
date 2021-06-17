@@ -31,7 +31,7 @@ export default function MainPage() {
   }, [artist]);
   return (
     <div className="mainPage">
-      <CardsRows title="Artists" lists={artist}></CardsRows>
+      <CardsRows title="Popular Artists" lists={artist}></CardsRows>
     </div>
   );
 }

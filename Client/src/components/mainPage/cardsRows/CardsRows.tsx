@@ -12,6 +12,11 @@ interface props {
 }
 
 export default function CardsRows({ title, description, lists }: props) {
+  const capitalize = (s) => {
+    if (typeof s !== "string") return "";
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
   return (
     <div className="cardRows">
       <div className="cardRows_title">
@@ -26,8 +31,8 @@ export default function CardsRows({ title, description, lists }: props) {
         {lists?.map((list) => {
           return (
             <ArtistCard
-              mainContant={list.name}
-              secondaryContant={list.type}
+              mainContant={capitalize(list.name)}
+              secondaryContant={capitalize(list.type)}
               image={{
                 borderRadius: 50,
                 imgUrl: list.images[0].url,
@@ -35,151 +40,6 @@ export default function CardsRows({ title, description, lists }: props) {
             ></ArtistCard>
           );
         })}
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
-        <ArtistCard
-          mainContant="Zayn"
-          secondaryContant="Artist"
-          image={{
-            imgUrl:
-              "https://pbs.twimg.com/profile_images/1308525962859098114/SFa770Jq_400x400.jpg",
-            borderRadius: 50,
-          }}
-        ></ArtistCard>
       </div>
     </div>
   );
