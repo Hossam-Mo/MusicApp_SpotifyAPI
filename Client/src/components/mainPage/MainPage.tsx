@@ -17,7 +17,10 @@ export default function MainPage() {
   }, [Spotify]);
   return (
     <div className="mainPage">
-      <CardsRows></CardsRows>
+      <CardsRows
+        title="Artists"
+        description="all your fivert artist"
+      ></CardsRows>
     </div>
   );
 }

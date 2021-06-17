@@ -1,0 +1,25 @@
+.cardRows {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+}
+
+.cardRows_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardRows_titleMain {
+  padding: 20px 0;
+}
+.cardRows_titleMain > h1 {
+  font-size: 24px;
+}
+
+.cardRows_titleMain > h3 {
+  color: #7d7d7d;
+  margin: 14px 0;
+  font-size: 16px;
+}
