@@ -2,11 +2,13 @@ import React from "react";
 import ArtistCard from "../artistCard/ArtistCard";
 import "./cardRows.css";
 import artists from "../../../types/artists";
+import lists from "../../../types/lists";
+import album from "../../../types/albums";
 
 interface props {
   title: string;
   description?: string;
-  lists?: artists[];
+  lists?: artists[] | lists[] | album[];
 }
 
 export default function CardsRows({ title, description }: props) {

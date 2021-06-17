@@ -1,4 +1,5 @@
 import artists from "./artists";
+import images from "./images";
 
 export default interface album {
   album_type: string;
@@ -8,4 +9,5 @@ export default interface album {
   type: string;
   total_tracks: number;
   release_date: string;
+  images: images[];
 }
