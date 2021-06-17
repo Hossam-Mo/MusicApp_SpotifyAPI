@@ -1,11 +1,14 @@
 import React from "react";
 import ArtistCard from "../artistCard/ArtistCard";
 import "./cardRows.css";
+import artists from "../../../types/artists";
 
 interface props {
   title: string;
   description?: string;
+  lists?: artists[];
 }
+
 export default function CardsRows({ title, description }: props) {
   return (
     <div className="cardRows">
