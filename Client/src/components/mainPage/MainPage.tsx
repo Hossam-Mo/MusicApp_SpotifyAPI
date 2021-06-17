@@ -31,11 +31,7 @@ export default function MainPage() {
   }, [artist]);
   return (
     <div className="mainPage">
-      <CardsRows
-        title="Artists"
-        description="all your fivert artist"
-        lists={artist}
-      ></CardsRows>
+      <CardsRows title="Artists" lists={artist}></CardsRows>
     </div>
   );
 }
