@@ -34,6 +34,7 @@ export default function MainPage() {
       <CardsRows
         title="Artists"
         description="all your fivert artist"
+        lists={artist}
       ></CardsRows>
     </div>
   );

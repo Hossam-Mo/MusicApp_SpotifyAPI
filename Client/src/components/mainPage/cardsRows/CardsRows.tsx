@@ -8,10 +8,10 @@ import album from "../../../types/albums";
 interface props {
   title: string;
   description?: string;
-  lists?: artists[] | lists[] | album[];
+  lists: artists[] | lists[] | album[] | undefined;
 }
 
-export default function CardsRows({ title, description }: props) {
+export default function CardsRows({ title, description, lists }: props) {
   return (
     <div className="cardRows">
       <div className="cardRows_title">
@@ -23,6 +23,18 @@ export default function CardsRows({ title, description }: props) {
       </div>
 
       <div>
+        {lists?.map((list) => {
+          return (
+            <ArtistCard
+              mainContant={list.name}
+              secondaryContant={list.type}
+              image={{
+                borderRadius: 50,
+                imgUrl: list.images[0].url,
+              }}
+            ></ArtistCard>
+          );
+        })}
         <ArtistCard
           mainContant="Zayn"
           secondaryContant="Artist"
