@@ -3,5 +3,5 @@ export const get_user = {
 };
 
 export const get_spotfiy = {
-  type: "get_spotify",
+  type: "get_spotfiy",
 };

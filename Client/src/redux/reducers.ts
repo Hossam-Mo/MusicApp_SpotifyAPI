@@ -13,7 +13,7 @@ export const getUser = (state = null, action: any) => {
 export const getSpotfiy = (state = null, action: any) => {
   switch (action.type) {
     case get_spotfiy.type:
-      return action.spotify;
+      return action.spotfiy;
     default:
       return state;
   }
@@ -21,5 +21,5 @@ export const getSpotfiy = (state = null, action: any) => {
 
 export const rootReducer = combineReducers({
   user: getUser,
-  spotify: getSpotfiy,
+  spotfiy: getSpotfiy,
 });

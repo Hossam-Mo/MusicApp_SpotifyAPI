@@ -24,12 +24,11 @@ function App() {
 
       dispatch({
         type: get_spotfiy.type,
-        spotify: Spotfiy,
+        spotfiy: Spotfiy,
       });
 
       Spotfiy.getMe()
         .then((user) => {
-          console.log(user);
           dispatch({
             type: get_user.type,
             user: user.body,

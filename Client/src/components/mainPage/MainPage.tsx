@@ -4,17 +4,17 @@ import CardsRows from "./cardsRows/CardsRows";
 import "./mainPage.css";
 
 export default function MainPage() {
-  const Spotify = useSelector((state: any) => state.spotify);
+  const Spotfiy = useSelector((state: any) => state.spotfiy);
   useEffect(() => {
-    if (Spotify)
-      Spotify.getMe()
-        .then((user: any) => {
-          console.log(user);
+    if (Spotfiy)
+      Spotfiy.getPlaylist("37i9dQZF1DWVi45nh2EuPP")
+        .then((r: any) => {
+          console.log(r);
         })
         .catch((err: any) => {
           console.log(err);
         });
-  }, [Spotify]);
+  }, [Spotfiy]);
   return (
     <div className="mainPage">
       <CardsRows
