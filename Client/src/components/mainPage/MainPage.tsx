@@ -9,7 +9,8 @@ export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [artist, setArtist] = useState<artists[]>();
   useEffect(() => {
-    if (Spotfiy)
+    if (Spotfiy) {
+      // geting the artists
       Spotfiy.getArtists([
         "5WUlDfRSoLAfcVSX1WnrxN",
         "66CXWjxzNUsdJxJ2JdwvnR",
@@ -24,6 +25,7 @@ export default function MainPage() {
         .catch((err: any) => {
           console.log(err);
         });
+    }
   }, [Spotfiy]);
 
   useEffect(() => {
