@@ -33,7 +33,11 @@ export default function MainPage() {
   }, [artist]);
   return (
     <div className="mainPage">
-      <CardsRows title="Popular Artists" lists={artist}></CardsRows>
+      <CardsRows
+        imgBorder={50}
+        title="Popular Artists"
+        lists={artist}
+      ></CardsRows>
     </div>
   );
 }

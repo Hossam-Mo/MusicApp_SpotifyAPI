@@ -9,9 +9,15 @@ interface props {
   title: string;
   description?: string;
   lists: artists[] | lists[] | album[] | undefined;
+  imgBorder: number | string;
 }
 
-export default function CardsRows({ title, description, lists }: props) {
+export default function CardsRows({
+  title,
+  description,
+  lists,
+  imgBorder,
+}: props) {
   const capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -31,10 +37,11 @@ export default function CardsRows({ title, description, lists }: props) {
         {lists?.map((list) => {
           return (
             <ArtistCard
+              key={list.id}
               mainContant={capitalize(list.name)}
               secondaryContant={capitalize(list.type)}
               image={{
-                borderRadius: 50,
+                borderRadius: imgBorder,
                 imgUrl: list.images[0].url,
               }}
             ></ArtistCard>
