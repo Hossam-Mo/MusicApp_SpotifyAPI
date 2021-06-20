@@ -1,12 +1,20 @@
 .leftslide {
   background-color: black;
   width: 200px;
+  min-width: 200px;
   min-height: 100vh;
   padding: 0 10px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.leftslide_main {
+  height: 100vh;
+
+  position: fixed;
+  width: 200px;
 }
 
 .leftslid_logo {
@@ -26,6 +34,9 @@
   color: rgb(202, 202, 202);
   padding: 10px;
   cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 45vh;
 }
 .leftslide_lists > div {
   transition: color 0.2s ease-in-out;
@@ -34,4 +45,20 @@
 }
 .leftslide_lists > div:hover {
   color: white;
+}
+
+.leftslide_lists::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+}
+
+.leftslide_lists::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.leftslide_lists::-webkit-scrollbar-thumb {
+  background-color: #181818;
+  border: 1px solid #181818;
+  height: 10px;
+  border-radius: 50px;
 }

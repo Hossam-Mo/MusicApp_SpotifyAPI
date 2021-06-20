@@ -68,23 +68,28 @@ export default function Leftslide() {
 
   return (
     <div className="leftslide">
-      <img className="leftslid_logo" src="/asset/logo.png" alt="Logo"></img>
-      <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
-      <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
-      <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
-      <LeftContant
-        Icon={IoAdd}
-        contant="Add your list"
-        marginTop={true}
-        onClick={addNewList}
-      ></LeftContant>
-      <LeftContant Icon={AiTwotoneHeart} contant="Your favorite"></LeftContant>
-      <div className="leftSlide_line"></div>
+      <div className="leftslide_main">
+        <img className="leftslid_logo" src="/asset/logo.png" alt="Logo"></img>
+        <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
+        <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
+        <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
+        <LeftContant
+          Icon={IoAdd}
+          contant="Add your list"
+          marginTop={true}
+          onClick={addNewList}
+        ></LeftContant>
+        <LeftContant
+          Icon={AiTwotoneHeart}
+          contant="Your favorite"
+        ></LeftContant>
+        <div className="leftSlide_line"></div>
 
-      <div className="leftslide_lists">
-        {lists?.map((list) => {
-          return <div key={list.id}>{list.name}</div>;
-        })}
+        <div className="leftslide_lists">
+          {lists?.map((list) => {
+            return <div key={list.id}>{list.name}</div>;
+          })}
+        </div>
       </div>
     </div>
   );

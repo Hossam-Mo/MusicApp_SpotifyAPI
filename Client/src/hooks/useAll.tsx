@@ -7,7 +7,7 @@ export default function useAll(prames) {
   const [res, setRes] = useState<any>();
 
   useEffect(() => {
-    if (Spotfiy) {
+    if (Spotfiy && prames) {
       switch (prames) {
         case "popularArtists": {
           Spotfiy.getArtists([
