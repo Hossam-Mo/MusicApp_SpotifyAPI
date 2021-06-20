@@ -10,6 +10,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.cardRows_title > a {
+  text-decoration: none;
+  color: #c5c5c5;
+}
 
 .cardRows_titleMain {
   padding: 20px 0;

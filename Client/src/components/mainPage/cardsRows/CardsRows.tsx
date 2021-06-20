@@ -4,6 +4,7 @@ import "./cardRows.css";
 import artists from "../../../types/artists";
 import lists from "../../../types/lists";
 import album from "../../../types/albums";
+import { Link } from "react-router-dom";
 
 interface props {
   title: string;
@@ -30,7 +31,10 @@ export default function CardsRows({
           <h1>{title}</h1>
           {description && <h3>{description}</h3>}
         </div>
-        <p>See all</p>
+        <Link to="/home/popularArtists">
+          {" "}
+          <p>See all</p>
+        </Link>
       </div>
 
       <div className="cardRows_cards">
