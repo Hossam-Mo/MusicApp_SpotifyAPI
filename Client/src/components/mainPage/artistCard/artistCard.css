@@ -17,6 +17,7 @@
 .artistCard_Main {
   position: relative;
   margin-bottom: 20px;
+  align-self: center;
 }
 .artistCard_Main > button {
   position: absolute;
