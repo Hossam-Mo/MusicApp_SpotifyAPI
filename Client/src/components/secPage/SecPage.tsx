@@ -33,13 +33,13 @@ export default function SecPage() {
         .catch((err) => {
           console.log(err);
         });
-      /*  Spotfiy.getArtistAlbums(prames.id)
+      Spotfiy.getArtistTopTracks(prames.id, "JO")
         .then((res) => {
           console.log(res);
         })
         .catch((err) => {
           console.log(err);
-        }); */
+        });
     }
   }, [prames, Spotfiy]);
 
