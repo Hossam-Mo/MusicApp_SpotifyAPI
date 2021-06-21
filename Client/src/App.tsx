@@ -9,6 +9,7 @@ import MainPage from "./components/mainPage/MainPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
+import SecPage from "./components/secPage/SecPage";
 const code = new URLSearchParams(window.location.search).get("code");
 const Spotfiy = new SpotifyWebApi({
   clientId: "4451beba5b2c42a4a9dbb72c109d2de5",
@@ -60,6 +61,9 @@ function App() {
           <Leftslide></Leftslide>
 
           <Switch>
+            <Route exact path="/:type/:id">
+              <SecPage></SecPage>
+            </Route>
             <Route exact path="/home/:pageName">
               <SeeAll></SeeAll>
             </Route>

@@ -40,15 +40,17 @@ export default function CardsRows({
       <div className="cardRows_cards">
         {lists?.map((list) => {
           return (
-            <ArtistCard
-              key={list.id}
-              mainContant={capitalize(list.name)}
-              secondaryContant={capitalize(list.type)}
-              image={{
-                borderRadius: imgBorder,
-                imgUrl: list.images[0].url,
-              }}
-            ></ArtistCard>
+            <Link to={`/${list.type}/${list.id}`}>
+              <ArtistCard
+                key={list.id}
+                mainContant={capitalize(list.name)}
+                secondaryContant={capitalize(list.type)}
+                image={{
+                  borderRadius: imgBorder,
+                  imgUrl: list.images[0].url,
+                }}
+              ></ArtistCard>
+            </Link>
           );
         })}
       </div>
