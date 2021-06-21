@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./secPage.css";
+
 //   Spotfiy.getArtist()
 
 interface prames {
@@ -12,6 +13,10 @@ export default function SecPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
 
   const prames = useParams<prames>();
+
+  /*   useEffect(() => {
+    console.log("this is spotify", Spotify);
+  }, [spotify]); */
 
   useEffect(() => {
     console.log(prames);
