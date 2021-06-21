@@ -31,7 +31,7 @@ export default function CardsRows({
           <h1>{title}</h1>
           {description && <h3>{description}</h3>}
         </div>
-        <Link to="/home/popularArtists">
+        <Link to="/popularArtists">
           {" "}
           <p>See all</p>
         </Link>
@@ -40,17 +40,16 @@ export default function CardsRows({
       <div className="cardRows_cards">
         {lists?.map((list) => {
           return (
-            <Link to={`/${list.type}/${list.id}`}>
-              <ArtistCard
-                key={list.id}
-                mainContant={capitalize(list.name)}
-                secondaryContant={capitalize(list.type)}
-                image={{
-                  borderRadius: imgBorder,
-                  imgUrl: list.images[0].url,
-                }}
-              ></ArtistCard>
-            </Link>
+            <ArtistCard
+              key={list.id}
+              id={list.id}
+              mainContant={capitalize(list.name)}
+              secondaryContant={capitalize(list.type)}
+              image={{
+                borderRadius: imgBorder,
+                imgUrl: list.images[0].url,
+              }}
+            ></ArtistCard>
           );
         })}
       </div>

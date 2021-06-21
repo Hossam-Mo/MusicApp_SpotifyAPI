@@ -64,7 +64,7 @@ function App() {
             <Route exact path="/:type/:id">
               <SecPage></SecPage>
             </Route>
-            <Route exact path="/home/:pageName">
+            <Route exact path="/:pageName">
               <SeeAll></SeeAll>
             </Route>
             <Route exact path="/">

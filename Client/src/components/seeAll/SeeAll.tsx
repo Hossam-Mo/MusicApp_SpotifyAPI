@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAll from "../../hooks/useAll";
 import ArtistCard from "../mainPage/artistCard/ArtistCard";
 import "./seeAll.css";
@@ -27,6 +27,7 @@ export default function SeeAll() {
         return (
           <ArtistCard
             key={list.id}
+            id={list.id}
             mainContant={capitalize(list.name)}
             secondaryContant={capitalize(list.type)}
             image={{

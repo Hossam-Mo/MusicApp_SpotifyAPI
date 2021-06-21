@@ -1,3 +1,5 @@
+import { url } from "inspector";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -14,6 +16,8 @@ export default function SecPage() {
 
   const prames = useParams<prames>();
 
+  const [test, setTest] = useState<any>();
+
   /*   useEffect(() => {
     console.log("this is spotify", Spotify);
   }, [spotify]); */
@@ -24,13 +28,30 @@ export default function SecPage() {
     if (prames.id && Spotfiy) {
       Spotfiy.getArtist(prames.id)
         .then((res) => {
-          console.log(res);
+          setTest(res.body);
         })
         .catch((err) => {
           console.log(err);
         });
+      /*  Spotfiy.getArtistAlbums(prames.id)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        }); */
     }
   }, [prames, Spotfiy]);
 
-  return <div className="secPage">hello</div>;
+  useEffect(() => {
+    console.log(test?.images[0]);
+  }, [test]);
+  return (
+    <div className="secPage">
+      <div
+        style={{ backgroundImage: `url(${test?.images[0].url})` }}
+        className="test"
+      ></div>
+    </div>
+  );
 }

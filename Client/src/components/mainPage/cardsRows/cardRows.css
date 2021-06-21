@@ -34,9 +34,7 @@
   overflow-x: scroll;
   padding: 5px;
 }
-.cardRows_cards > a {
-  text-decoration: none;
-}
+
 .cardRows_cards::-webkit-scrollbar {
   width: 10px;
   height: 0;

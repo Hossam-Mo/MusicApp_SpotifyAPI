@@ -1,7 +1,9 @@
 import "./artistCard.css";
 import { IoPlaySharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 interface props {
+  id: string;
   mainContant: string;
   secondaryContant: string;
   image: {
@@ -13,9 +15,11 @@ export default function ArtistCard({
   mainContant,
   secondaryContant,
   image,
+  id,
 }: props) {
   return (
-    <div className="artistCard">
+    <Link className="artistCard" to={`/${secondaryContant}/${id}`}>
+      {" "}
       <div className="artistCard_Main">
         <img
           className="artistCard_img"
@@ -27,9 +31,9 @@ export default function ArtistCard({
           <IoPlaySharp></IoPlaySharp>
         </button>
       </div>
-
       <h3>{mainContant}</h3>
       <p>{secondaryContant}</p>
-    </div>
+    </Link>
   );
 }
+//   <Link to={`/${list.type}/{${list.id}}`}> </Link>
