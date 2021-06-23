@@ -11,28 +11,12 @@ interface prames {
   type: string;
 }
 export default function SecPage() {
-  const Spotfiy = useSelector((state: any) => state.spotfiy);
   const prames = useParams<prames>();
-
   const list = useSecPage(prames.id, prames.type);
 
   useEffect(() => {
     console.log("tihs is list", list);
   }, [list]);
-
-  useEffect(() => {
-    console.log(prames);
-
-    if (prames.id && Spotfiy) {
-      Spotfiy.getArtistTopTracks(prames.id, "JO")
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [prames, Spotfiy]);
 
   return (
     <div className="secPage">
