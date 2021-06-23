@@ -13,7 +13,7 @@ export default function useSecPage(id: string, type: string) {
   });
 
   useEffect(() => {
-    if (id && type)
+    if (id && type) {
       if (type.toLowerCase() === "artist") {
         Spotfiy.getArtist(id)
           .then((res) => {
@@ -46,7 +46,10 @@ export default function useSecPage(id: string, type: string) {
           .catch((err) => {
             console.log(err);
           });
+
+     
       }
+    }
   }, [id, type]);
 
   if (type.toLowerCase() === "artist")
