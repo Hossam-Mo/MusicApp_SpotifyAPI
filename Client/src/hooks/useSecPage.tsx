@@ -33,7 +33,7 @@ export default function useSecPage(id: string, type: string) {
 
         Spotfiy.getArtistAlbums(id)
           .then((res) => {
-            setAlbums(res.body);
+            setAlbums(res.body.items);
           })
           .catch((err) => {
             console.log(err);
@@ -50,5 +50,5 @@ export default function useSecPage(id: string, type: string) {
   }, [id, type]);
 
   if (type.toLowerCase() === "artist")
-    return { info: artist, tracks, albums, relatedArtists };
+    return { info: artist, tracks, lists: [albums, relatedArtists] };
 }
