@@ -50,7 +50,7 @@ export default function SecPage() {
     <div className="secPage">
       <div
         style={{ backgroundImage: `url(${test?.images[0].url})` }}
-        className="test"
+        className="secPage_cover"
       ></div>
     </div>
   );
