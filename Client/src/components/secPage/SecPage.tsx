@@ -21,11 +21,13 @@ export default function SecPage() {
 
   return (
     <div className="secPage">
+      <div className="secPage_background"></div>
       {/*      <div
         style={{ backgroundImage: `url(${coverImage?.images[0].url})` }}
         className="secPage_cover"
       ></div> */}
       <SecCover info={lists?.info}></SecCover>
+      <div className="s">hello</div>
     </div>
   );
 }
