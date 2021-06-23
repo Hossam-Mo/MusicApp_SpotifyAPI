@@ -7,6 +7,7 @@ export default function useSecPage(id: string, type: string) {
   const [artist, setArtist] = useState();
   const [tracks, setTracks] = useState();
   const [albums, setAlbums] = useState();
+  const [relatedArtists, setRelatedArtists] = useState();
   const user = useSelector((state: any) => state.user);
   const Spotfiy = useSelector((state: any) => {
     return state.spotfiy;
@@ -41,15 +42,14 @@ export default function useSecPage(id: string, type: string) {
 
       Spotfiy.getArtistRelatedArtists(id)
         .then((res) => {
-          console.log(res);
+          setRelatedArtists(res.body.artists);
         })
         .catch((err) => {
           console.log(err);
         });
-
-      setA({ id, type });
     }
   }, [id, type]);
 
-  return a;
+  if (type.toLowerCase() === "artist")
+    return { info: artist, tracks, albums, relatedArtists };
 }
