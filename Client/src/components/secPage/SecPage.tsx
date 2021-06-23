@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useSecPage from "../../hooks/useSecPage";
+import SecCover from "./secCover/SecCover";
 import "./secPage.css";
 
 //   Spotfiy.getArtist()
@@ -12,11 +13,11 @@ interface prames {
 }
 export default function SecPage() {
   const prames = useParams<prames>();
-  const list = useSecPage(prames.id, prames.type);
+  const lists = useSecPage(prames.id, prames.type);
 
   useEffect(() => {
-    console.log("tihs is list", list);
-  }, [list]);
+    console.log("tihs is list", lists);
+  }, [lists]);
 
   return (
     <div className="secPage">
@@ -24,6 +25,7 @@ export default function SecPage() {
         style={{ backgroundImage: `url(${coverImage?.images[0].url})` }}
         className="secPage_cover"
       ></div> */}
+      <SecCover info={lists?.info}></SecCover>
     </div>
   );
 }

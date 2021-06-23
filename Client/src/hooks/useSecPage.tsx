@@ -47,7 +47,13 @@ export default function useSecPage(id: string, type: string) {
             console.log(err);
           });
 
-     
+        Spotfiy.getPlaylist("37i9dQZF1DX5Ejj0EkURtP")
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     }
   }, [id, type]);
