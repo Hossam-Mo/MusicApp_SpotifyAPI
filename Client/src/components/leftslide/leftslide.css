@@ -12,9 +12,11 @@
 
 .leftslide_main {
   height: 100vh;
-
   position: fixed;
-  width: 200px;
+  left: 0;
+  top: 0;
+  width: 220px;
+  background-color: black;
 }
 
 .leftslid_logo {
