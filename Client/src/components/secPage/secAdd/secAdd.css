@@ -4,12 +4,16 @@
   padding: 30px;
 }
 .secAdd > svg {
-  color: white;
+  color: rgb(126, 126, 126);
   font-size: 27px;
   margin-left: 20px;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
+.secAdd > svg:hover {
+  color: rgb(242, 242, 242);
+}
 .secAdd > button {
   border-radius: 50%;
   background-color: #1db954;
