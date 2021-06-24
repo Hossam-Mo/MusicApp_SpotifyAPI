@@ -1,0 +1,35 @@
+.secAdd {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+}
+.secAdd > svg {
+  color: white;
+  font-size: 27px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.secAdd > button {
+  border-radius: 50%;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.secAdd > button > svg {
+  font-size: 25px;
+  margin-left: 2px;
+}
+.secAdd > button:hover {
+  transform: scale(1.1);
+}
