@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useSecPage from "../../hooks/useSecPage";
 import SecCover from "./secCover/SecCover";
 import "./secPage.css";
+import SecTracks from "./secTracks/SecTracks";
 
 //   Spotfiy.getArtist()
 
@@ -27,7 +28,7 @@ export default function SecPage() {
         className="secPage_cover"
       ></div> */}
       <SecCover info={lists?.info}></SecCover>
-      <div className="s">hello</div>
+      <SecTracks></SecTracks>
     </div>
   );
 }
