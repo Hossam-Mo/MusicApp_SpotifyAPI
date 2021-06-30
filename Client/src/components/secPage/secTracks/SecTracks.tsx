@@ -5,7 +5,6 @@ import tracks from "../../../types/tracks";
 import album from "../../../types/albums";
 import artists from "../../../types/artists";
 import lists from "../../../types/lists";
-import { useEffect } from "react";
 import CardsRows from "../../mainPage/cardsRows/CardsRows";
 
 interface rows {
@@ -19,9 +18,6 @@ interface props {
 }
 
 export default function SecTracks({ tracks, lists }: props) {
-  useEffect(() => {
-    console.log("this is sssss", lists);
-  }, [lists]);
   return (
     <div className="secTracks">
       <SecAdd></SecAdd>

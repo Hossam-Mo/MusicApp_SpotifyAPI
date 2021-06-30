@@ -10,7 +10,6 @@ const capitalize = (s) => {
 };
 
 export default function SecCover({ info }: props) {
-  console.log(info);
   return (
     <div className="secCover">
       <img src={info?.images[0].url} alt={info?.name}></img>

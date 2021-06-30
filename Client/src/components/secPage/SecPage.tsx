@@ -17,8 +17,8 @@ export default function SecPage() {
   const lists = useSecPage(prames.id, prames.type);
 
   useEffect(() => {
-    console.log("tihs is list", lists);
-  }, [lists]);
+    console.log(prames);
+  }, [prames]);
 
   return (
     <div className="secPage">

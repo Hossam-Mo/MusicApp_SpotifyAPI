@@ -6,7 +6,12 @@ import { get_spotfiy, get_user } from "./redux/actionTypes";
 import SpotifyWebApi from "spotify-web-api-node";
 import Login from "./components/login/Login";
 import MainPage from "./components/mainPage/MainPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+} from "react-router-dom";
 import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
 import SecPage from "./components/secPage/SecPage";
@@ -17,7 +22,6 @@ const Spotfiy = new SpotifyWebApi({
 
 function App() {
   const token = useAuth();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,6 +58,7 @@ function App() {
         }); */
     }
   }, [token]);
+
   return (
     <div className="App">
       {code ? (
