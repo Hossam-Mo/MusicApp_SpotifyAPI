@@ -6,6 +6,7 @@ import album from "../../../types/albums";
 import artists from "../../../types/artists";
 import lists from "../../../types/lists";
 import { useEffect } from "react";
+import CardsRows from "../../mainPage/cardsRows/CardsRows";
 
 interface rows {
   name: string;
@@ -19,7 +20,7 @@ interface props {
 
 export default function SecTracks({ tracks, lists }: props) {
   useEffect(() => {
-    console.log(lists);
+    console.log("this is sssss", lists);
   }, [lists]);
   return (
     <div className="secTracks">
@@ -36,6 +37,16 @@ export default function SecTracks({ tracks, lists }: props) {
             album={track.album}
             number={index + 1}
           ></SecTrack>
+        );
+      })}
+      {lists?.map((row, index) => {
+        return (
+          <CardsRows
+            key={index}
+            lists={row.list}
+            title={row.name}
+            imgBorder={"artist" == "artist" ? 50 : 5}
+          ></CardsRows>
         );
       })}
     </div>

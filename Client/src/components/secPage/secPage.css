@@ -1,6 +1,7 @@
 .secPage {
   flex: 1;
   position: relative;
+  overflow: hidden;
 }
 
 .secPage_cover {
