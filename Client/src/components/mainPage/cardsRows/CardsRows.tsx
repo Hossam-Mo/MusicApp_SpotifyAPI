@@ -1,4 +1,3 @@
-import React from "react";
 import ArtistCard from "../artistCard/ArtistCard";
 import "./cardRows.css";
 import artists from "../../../types/artists";
@@ -32,7 +31,6 @@ export default function CardsRows({
           {description && <h3>{description}</h3>}
         </div>
         <Link to="/popularArtists">
-          {" "}
           <p>See all</p>
         </Link>
       </div>
