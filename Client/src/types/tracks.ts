@@ -5,7 +5,7 @@ export default interface tracks {
   id: string;
   name: string;
   duration_ms: number;
-  type: string;
+  type?: string;
   number?: string | number;
   href?: string;
 }
