@@ -17,7 +17,7 @@ export default function SecPage() {
   const lists = useSecPage(prames.id, prames.type);
 
   useEffect(() => {
-    console.log(prames);
+    window.scrollTo(0, 0);
   }, [prames]);
 
   return (
