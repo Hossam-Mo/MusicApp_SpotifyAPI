@@ -3,7 +3,11 @@ import SecTrack from "./secTack/SecTrack";
 import "./secTracks.css";
 import tracks from "../../../types/tracks";
 
-export default function SecTracks({ tracks }: { tracks?: tracks[] }) {
+interface props {
+  tracks?: tracks[];
+}
+
+export default function SecTracks({ tracks }: props) {
   return (
     <div className="secTracks">
       <SecAdd></SecAdd>

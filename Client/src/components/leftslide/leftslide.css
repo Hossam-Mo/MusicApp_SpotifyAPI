@@ -1,6 +1,6 @@
 .leftslide {
   background-color: black;
-  width: 200px;
+  width: 275px;
   min-width: 200px;
   min-height: 100vh;
   padding: 0 10px;
@@ -15,8 +15,9 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: 220px;
+  width: 275px;
   background-color: black;
+  margin: 10px;
 }
 
 .leftslid_logo {
