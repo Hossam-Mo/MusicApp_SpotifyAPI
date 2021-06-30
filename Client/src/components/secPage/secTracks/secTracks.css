@@ -1,4 +1,4 @@
 .secTracks {
-  min-height: 100vh;
+  min-height: calc(100vh - 380px);
   background-color: rgba(0, 0, 0, 0.5);
 }

@@ -13,7 +13,8 @@
 }
 
 .secPage_background {
-  background-image: linear-gradient(360deg, #121212, #1a9143);
+  /*   background-image: linear-gradient(360deg, #121212, #1a9143); */
+  background-image: linear-gradient(360deg, #121212, #505050);
   height: 700px;
   width: 100%;
   position: absolute;
