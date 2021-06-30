@@ -28,7 +28,7 @@ export default function SecPage() {
         className="secPage_cover"
       ></div> */}
       <SecCover info={lists?.info}></SecCover>
-      <SecTracks tracks={lists?.tracks}></SecTracks>
+      <SecTracks tracks={lists?.tracks} lists={lists?.lists}></SecTracks>
     </div>
   );
 }

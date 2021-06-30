@@ -19,9 +19,6 @@ export default function SecTrack({
   number,
 }: tracks) {
   const prames = useParams<prames>();
-  useEffect(() => {
-    console.log(prames);
-  }, [prames]);
 
   return (
     <div className="secTrack">

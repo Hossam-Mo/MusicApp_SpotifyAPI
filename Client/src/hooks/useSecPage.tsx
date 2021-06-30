@@ -59,5 +59,12 @@ export default function useSecPage(id: string, type: string) {
   }, [id, type]);
 
   if (type.toLowerCase() === "artist")
-    return { info: artist, tracks, lists: [albums, relatedArtists] };
+    return {
+      info: artist,
+      tracks,
+      lists: [
+        { name: "Albums", list: albums },
+        { name: "Related Artist", list: relatedArtists },
+      ],
+    };
 }

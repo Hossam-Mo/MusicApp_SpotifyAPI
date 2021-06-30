@@ -2,12 +2,25 @@ import SecAdd from "../secAdd/SecAdd";
 import SecTrack from "./secTack/SecTrack";
 import "./secTracks.css";
 import tracks from "../../../types/tracks";
+import album from "../../../types/albums";
+import artists from "../../../types/artists";
+import lists from "../../../types/lists";
+import { useEffect } from "react";
+
+interface rows {
+  name: string;
+  list: album[] | artists[] | lists[] | undefined;
+}
 
 interface props {
   tracks?: tracks[];
+  lists?: rows[];
 }
 
-export default function SecTracks({ tracks }: props) {
+export default function SecTracks({ tracks, lists }: props) {
+  useEffect(() => {
+    console.log(lists);
+  }, [lists]);
   return (
     <div className="secTracks">
       <SecAdd></SecAdd>

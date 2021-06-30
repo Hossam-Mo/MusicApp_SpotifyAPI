@@ -40,6 +40,7 @@
 }
 .secTrack_name > div > h3:nth-child(2) {
   color: #a2a2a2;
+  font-size: 14px;
 }
 .secTrack:hover .secTrack_name > svg {
   display: unset;
