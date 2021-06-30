@@ -17,13 +17,19 @@ export default function SecTrack({
 
   return (
     <div className="secTrack">
-      <div>
+      <div className="secTrack_name">
         <p>{number}</p>
         <img src={album.images[1].url} alt={album.name}></img>
         <h3>{name}</h3>
       </div>
-      <h3>{type}</h3>
-      <div>{duration_ms}</div>
+      <div className="secTrack_mid">
+        <p>{album.name}</p>
+      </div>
+      <div className="secTrack_mid">
+        <p>{album.release_date}</p>
+      </div>
+
+      <div className="secTrack_duration">{duration_ms}</div>
     </div>
   );
 }

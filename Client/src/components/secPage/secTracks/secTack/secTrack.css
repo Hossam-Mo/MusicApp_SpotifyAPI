@@ -1,0 +1,40 @@
+.secTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: white;
+}
+
+.secTrack_name {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.secTrack_name > p {
+  font-size: 15px;
+  margin: 20px;
+}
+.secTrack_name > img {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+.secTrack_name > h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 20px;
+}
+.secTrack_mid {
+  flex: 0.3;
+  text-align: start;
+  color: #a2a2a2;
+  font-size: 14px;
+  margin: 0 20px;
+}
+.secTrack_duration {
+  flex: 0.3;
+  color: #a2a2a2;
+  font-size: 14px;
+  text-align: center;
+}
