@@ -7,15 +7,17 @@ export default function SecTracks({ tracks }: { tracks?: tracks[] }) {
   return (
     <div className="secTracks">
       <SecAdd></SecAdd>
-      {tracks?.map((track) => {
+      <h3>Tracks</h3>
+      {tracks?.map((track, index) => {
         return (
           <SecTrack
             key={track.id}
             id={track.id}
             type={track.type}
-            duration={track.duration}
+            duration_ms={track.duration_ms}
             name={track.name}
             album={track.album}
+            number={index + 1}
           ></SecTrack>
         );
       })}

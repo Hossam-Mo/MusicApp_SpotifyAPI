@@ -4,7 +4,8 @@ export default interface tracks {
   album: album;
   id: string;
   name: string;
-  href?: string;
-  duration: number;
+  duration_ms: number;
   type: string;
+  number?: string | number;
+  href?: string;
 }

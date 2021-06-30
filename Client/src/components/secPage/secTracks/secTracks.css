@@ -2,3 +2,9 @@
   min-height: calc(100vh - 380px);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.secTracks > h3 {
+  color: white;
+  font-size: 17px;
+  margin: 20px;
+}
