@@ -1,7 +1,6 @@
-import React from "react";
 import "./secCover.css";
 interface props {
-  info: any;
+  info?: any;
 }
 
 const capitalize = (s) => {

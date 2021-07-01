@@ -20,6 +20,10 @@ export default function SecPage() {
     window.scrollTo(0, 0);
   }, [prames]);
 
+  useEffect(() => {
+    console.log(lists);
+  }, [lists]);
+
   return (
     <div className="secPage">
       <div className="secPage_background"></div>

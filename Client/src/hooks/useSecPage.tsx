@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function useSecPage(id: string, type: string) {
-  const [artist, setArtist] = useState();
+  const [info, setInfo] = useState();
   const [tracks, setTracks] = useState();
   const [albums, setAlbums] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
@@ -17,7 +17,7 @@ export default function useSecPage(id: string, type: string) {
       if (type.toLowerCase() == "artist") {
         Spotfiy.getArtist(id)
           .then((res) => {
-            setArtist(res.body);
+            setInfo(res.body);
           })
           .catch((err) => {
             console.log(err);
@@ -57,8 +57,14 @@ export default function useSecPage(id: string, type: string) {
       } else if (type.toLowerCase() == "album") {
         Spotfiy.getAlbum(id)
           .then((r) => {
-            setAlbums(r.body);
-            setArtist(r.body.artist);
+            let newTracks;
+            newTracks = r.body.tracks.items.map((item) => {
+              item["album"] = r.body;
+              return item;
+            });
+
+            setInfo(r.body);
+            setTracks(newTracks);
           })
           .catch((err) => {
             console.log(err);
@@ -67,13 +73,15 @@ export default function useSecPage(id: string, type: string) {
     }
   }, [id, type]);
 
-  if (type.toLowerCase() === "artist")
-    return {
-      info: artist,
-      tracks,
-      lists: [
-        { name: "Albums", list: albums },
-        { name: "Related Artist", list: relatedArtists },
-      ],
-    };
+  return {
+    info,
+    tracks,
+    lists:
+      type.toLowerCase() === "artist"
+        ? [
+            { name: "Albums", list: albums },
+            { name: "Related Artist", list: relatedArtists },
+          ]
+        : undefined,
+  };
 }

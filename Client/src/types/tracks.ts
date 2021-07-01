@@ -1,7 +1,7 @@
 import album from "./albums";
 
 export default interface tracks {
-  album: album;
+  album?: album;
   id: string;
   name: string;
   duration_ms: number;
