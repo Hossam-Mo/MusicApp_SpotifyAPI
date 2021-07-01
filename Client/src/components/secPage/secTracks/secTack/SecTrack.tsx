@@ -19,6 +19,13 @@ export default function SecTrack({
 }: tracks) {
   const prames = useParams<prames>();
 
+  const millisToMinutesAndSeconds = (millis) => {
+    var minutes = Math.floor(millis / 60000);
+    var seconds: any = ((millis % 60000) / 1000).toFixed(0);
+
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <div className="secTrack">
       <div className="secTrack_name">
@@ -39,7 +46,7 @@ export default function SecTrack({
 
       <div className="secTrack_duration">
         <AiOutlineHeart></AiOutlineHeart>
-        <p>{duration_ms}</p>
+        <p>{millisToMinutesAndSeconds(duration_ms)}</p>
         <BsThreeDots></BsThreeDots>
       </div>
     </div>
