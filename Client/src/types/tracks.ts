@@ -7,5 +7,5 @@ export default interface tracks {
   duration_ms: number;
   type?: string;
   number?: string | number;
-  href?: string;
+  preview_url?: string;
 }
