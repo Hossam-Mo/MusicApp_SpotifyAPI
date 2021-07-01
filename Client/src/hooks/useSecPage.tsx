@@ -56,15 +56,28 @@ export default function useSecPage(id: string, type: string) {
           });
       } else if (type.toLowerCase() == "album") {
         Spotfiy.getAlbum(id)
-          .then((r) => {
+          .then((res) => {
             let newTracks;
-            newTracks = r.body.tracks.items.map((item) => {
-              item["album"] = r.body;
+            newTracks = res.body.tracks.items.map((item) => {
+              item["album"] = res.body;
               return item;
             });
 
-            setInfo(r.body);
+            setInfo(res.body);
             setTracks(newTracks);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else if (type.toLowerCase() == "playlist") {
+        Spotfiy.getPlaylist(id)
+          .then((res) => {
+            setInfo(res.body);
+            setTracks(
+              res.body.tracks.items.map((item) => {
+                return item.track;
+              })
+            );
           })
           .catch((err) => {
             console.log(err);
