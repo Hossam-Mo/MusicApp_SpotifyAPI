@@ -14,7 +14,7 @@ export default function useSecPage(id: string, type: string) {
 
   useEffect(() => {
     if (id && type) {
-      if (type.toLowerCase() === "artist") {
+      if (type.toLowerCase() == "artist") {
         Spotfiy.getArtist(id)
           .then((res) => {
             setArtist(res.body);
@@ -47,9 +47,17 @@ export default function useSecPage(id: string, type: string) {
             console.log(err);
           });
 
-        Spotfiy.getPlaylist("37i9dQZF1DX5Ejj0EkURtP")
+        /*         Spotfiy.getPlaylist("37i9dQZF1DX5Ejj0EkURtP")
           .then((res) => {
             console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          }); */
+      } else if (type.toLowerCase() == "album") {
+        Spotfiy.getAlbum(id)
+          .then((r) => {
+            console.log(r);
           })
           .catch((err) => {
             console.log(err);
