@@ -3,7 +3,9 @@ import "./cardRows.css";
 import artists from "../../../types/artists";
 import lists from "../../../types/lists";
 import album from "../../../types/albums";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 interface props {
   title: string;
@@ -18,6 +20,14 @@ export default function CardsRows({
   lists,
   imgBorder,
 }: props) {
+  const row = useRef<HTMLDivElement>(null);
+  const prames = useParams();
+
+  useEffect(() => {
+    console.log(row);
+    row.current?.scroll({ left: 0 });
+  }, [prames]);
+
   const capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -35,7 +45,7 @@ export default function CardsRows({
         </Link>
       </div>
 
-      <div className="cardRows_cards">
+      <div ref={row} className="cardRows_cards">
         {lists?.map((list) => {
           return (
             <ArtistCard
