@@ -7,6 +7,7 @@ import db, { serverTime } from "../../firebase";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface img {
   url: string;
@@ -69,7 +70,10 @@ export default function Leftslide() {
   return (
     <div className="leftslide">
       <div className="leftslide_main">
-        <img className="leftslid_logo" src="/asset/logo.png" alt="Logo"></img>
+        <Link to="/">
+          <img className="leftslid_logo" src="/asset/logo.png" alt="Logo"></img>
+        </Link>
+
         <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
         <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
         <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
