@@ -24,7 +24,6 @@ export default function CardsRows({
   const prames = useParams();
 
   useEffect(() => {
-    console.log(row);
     row.current?.scroll({ left: 0 });
   }, [prames]);
 

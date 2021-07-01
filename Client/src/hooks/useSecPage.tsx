@@ -57,7 +57,8 @@ export default function useSecPage(id: string, type: string) {
       } else if (type.toLowerCase() == "album") {
         Spotfiy.getAlbum(id)
           .then((r) => {
-            console.log(r);
+            setAlbums(r.body);
+            setArtist(r.body.artist);
           })
           .catch((err) => {
             console.log(err);
