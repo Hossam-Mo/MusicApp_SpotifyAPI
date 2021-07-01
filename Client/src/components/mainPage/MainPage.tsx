@@ -4,10 +4,13 @@ import { useSelector } from "react-redux";
 import CardsRows from "./cardsRows/CardsRows";
 import "./mainPage.css";
 import artists from "../../types/artists";
+import lists from "../../types/lists";
 
 export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [artist, setArtist] = useState<artists[]>();
+  const [playlists, setPlaylists] = useState<lists[]>();
+  const [description, setDescription] = useState<string>();
   useEffect(() => {
     if (Spotfiy) {
       // geting the artists
@@ -30,18 +33,30 @@ export default function MainPage() {
         .catch((err: any) => {
           console.log(err);
         });
+      Spotfiy.getFeaturedPlaylists()
+        .then((r: any) => {
+          console.log(r);
+          setPlaylists(r.body.playlists.items);
+          setDescription(r.body.message);
+        })
+        .catch((err: any) => {
+          console.log(err);
+        });
     }
   }, [Spotfiy]);
 
-  useEffect(() => {
-    console.log("this is the list", artist);
-  }, [artist]);
   return (
     <div className="mainPage">
       <CardsRows
         imgBorder={50}
         title="Popular Artists"
         lists={artist}
+      ></CardsRows>
+      <CardsRows
+        imgBorder={2}
+        title="Play Lists"
+        lists={playlists}
+        description={description}
       ></CardsRows>
     </div>
   );
