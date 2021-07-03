@@ -44,7 +44,6 @@
 }
 .artistCard_img {
   width: 100%;
-  /* height: 65%; */
   height: 159px;
   object-fit: cover;
 
