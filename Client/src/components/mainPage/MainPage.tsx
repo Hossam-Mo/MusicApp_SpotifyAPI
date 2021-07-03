@@ -3,51 +3,32 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CardsRows from "./cardsRows/CardsRows";
 import "./mainPage.css";
-import artists from "../../types/artists";
-import lists from "../../types/lists";
-
+import useMainRows from "../../hooks/useMainRows";
+//imgBorder={row?.lists?[index].type=='artist' ? 50 :50}
 export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
-  const [artist, setArtist] = useState<artists[]>();
-  const [playlists, setPlaylists] = useState<lists[]>();
-  const [description, setDescription] = useState<string>();
+
+  const rows = useMainRows(50);
   useEffect(() => {
-    if (Spotfiy) {
-      // geting the artists
-      Spotfiy.getArtists([
-        "5WUlDfRSoLAfcVSX1WnrxN",
-        "66CXWjxzNUsdJxJ2JdwvnR",
-        "1uNFoZAHBGtllmzznpCI3s",
-        "53XhwfbYqKCa1cC15pYq2q",
-        "5ZsFI1h6hIdQRw2ti0hz81",
-        "06HL4z0CvFAxyc27GXpf02",
-        "7vk5e3vY1uw9plTHJAMwjN",
-        "6M2wZ9GZgrQXHCFfjv46we",
-        "7dGJo4pcD2V6oG8kP0tJRR",
-        "1Xyo4u8uXC1ZmMpatF05PJ",
-      ])
-        .then((r: any) => {
-          console.log(r);
-          setArtist(r.body.artists);
-        })
-        .catch((err: any) => {
-          console.log(err);
-        });
-      Spotfiy.getFeaturedPlaylists()
-        .then((r: any) => {
-          console.log(r);
-          setPlaylists(r.body.playlists.items);
-          setDescription(r.body.message);
-        })
-        .catch((err: any) => {
-          console.log(err);
-        });
-    }
-  }, [Spotfiy]);
+    console.log(rows);
+  }, [rows]);
 
   return (
     <div className="mainPage">
-      <CardsRows
+      {rows.map((row, index) => {
+        let listIndex;
+        if (row.lists) listIndex = row.lists[index];
+
+        return (
+          <CardsRows
+            imgBorder={listIndex.type == "artist" ? 50 : 50}
+            title={row.name}
+            lists={row.lists}
+            description={row.description}
+          ></CardsRows>
+        );
+      })}
+      {/*     <CardsRows
         imgBorder={50}
         title="Popular Artists"
         lists={artist}
@@ -57,7 +38,7 @@ export default function MainPage() {
         title="Play Lists"
         lists={playlists}
         description={description}
-      ></CardsRows>
+      ></CardsRows> */}
     </div>
   );
 }
