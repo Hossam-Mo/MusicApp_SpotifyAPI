@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import lists from "../types/lists";
 import artists from "../types/artists";
-export default function useMainRows(test) {
+export default function useMainRows() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [artist, setArtist] = useState<artists[]>();
   const [featuredPlaylists, setFeaturedPlaylists] = useState<lists[]>();

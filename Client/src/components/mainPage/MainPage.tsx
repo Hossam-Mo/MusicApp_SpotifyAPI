@@ -8,7 +8,7 @@ import useMainRows from "../../hooks/useMainRows";
 export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
 
-  const rows = useMainRows(50);
+  const rows = useMainRows();
   useEffect(() => {
     console.log(rows);
   }, [rows]);
@@ -16,12 +16,9 @@ export default function MainPage() {
   return (
     <div className="mainPage">
       {rows.map((row, index) => {
-        let listIndex;
-        if (row.lists) listIndex = row.lists[index];
-
         return (
           <CardsRows
-            imgBorder={listIndex.type == "artist" ? 50 : 2}
+            imgBorder={row.lists && row.lists[index].type == "artist" ? 50 : 2}
             title={row.name}
             lists={row.lists}
             description={row.description}
