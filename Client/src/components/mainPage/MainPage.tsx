@@ -21,7 +21,7 @@ export default function MainPage() {
 
         return (
           <CardsRows
-            imgBorder={listIndex.type == "artist" ? 50 : 50}
+            imgBorder={listIndex.type == "artist" ? 50 : 2}
             title={row.name}
             lists={row.lists}
             description={row.description}
