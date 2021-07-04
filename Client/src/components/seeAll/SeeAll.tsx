@@ -1,6 +1,5 @@
-import React from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAll from "../../hooks/useAll";
 import ArtistCard from "../mainPage/artistCard/ArtistCard";
 import "./seeAll.css";
