@@ -46,14 +46,6 @@ export default function useSecPage(id: string, type: string) {
           .catch((err) => {
             console.log(err);
           });
-
-        Spotfiy.getPlaylist("37i9dQZF1DX5Ejj0EkURtP")
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
       } else if (type.toLowerCase() == "album") {
         Spotfiy.getAlbum(id)
           .then((res) => {

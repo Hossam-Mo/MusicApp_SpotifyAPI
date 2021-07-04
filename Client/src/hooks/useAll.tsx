@@ -85,6 +85,32 @@ export default function useAll(pageName, id) {
           default:
             return;
         }
+      } else {
+        switch (pageName) {
+          case "Albums": {
+            Spotfiy.getArtistAlbums(id, { limit: 50 })
+              .then((res) => {
+                setRes(res.body.items);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            return;
+          }
+          case "Related Artist": {
+            Spotfiy.getArtistRelatedArtists(id)
+              .then((res) => {
+                setRes(res.body.artists);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
+            return;
+          }
+          default:
+            return;
+        }
       }
     }
   }, [Spotfiy]);
