@@ -14,6 +14,11 @@ interface props {
   imgBorder: number | string;
 }
 
+interface prames {
+  id?: string;
+  type?: string;
+}
+
 export default function CardsRows({
   title,
   description,
@@ -21,7 +26,22 @@ export default function CardsRows({
   imgBorder,
 }: props) {
   const row = useRef<HTMLDivElement>(null);
-  const prames = useParams();
+  const prames = useParams<prames>();
+
+  useEffect(() => {
+    console.log(prames);
+  }, [prames]);
+
+  const seeAllUrl = () => {
+    function isEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+    if (isEmpty(prames)) {
+      return `${title}`;
+    } else {
+      return `${title}/${prames.id}`;
+    }
+  };
 
   useEffect(() => {
     row.current?.scroll({ left: 0 });
@@ -39,7 +59,7 @@ export default function CardsRows({
           <h1>{title}</h1>
           {description && <h3>{description}</h3>}
         </div>
-        <Link to={`/${"popularArtists/?id=213214235634"}`}>
+        <Link to={`/seeAll/${seeAllUrl()}`}>
           <p>See all</p>
         </Link>
       </div>

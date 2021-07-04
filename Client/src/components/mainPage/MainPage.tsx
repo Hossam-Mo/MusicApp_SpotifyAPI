@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import CardsRows from "./cardsRows/CardsRows";
 import "./mainPage.css";
 import useMainRows from "../../hooks/useMainRows";
+
 //imgBorder={row?.lists?[index].type=='artist' ? 50 :50}
 export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);

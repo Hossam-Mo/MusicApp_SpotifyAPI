@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAll from "../../hooks/useAll";
 import ArtistCard from "../mainPage/artistCard/ArtistCard";
@@ -9,6 +10,10 @@ interface prames {
 export default function SeeAll() {
   const { pageName } = useParams<prames>();
   const lists = useAll(pageName);
+
+  useEffect(() => {
+    console.log(pageName);
+  }, []);
 
   const capitalize = (s) => {
     if (typeof s !== "string") return "";
@@ -25,7 +30,7 @@ export default function SeeAll() {
             mainContant={capitalize(list.name)}
             secondaryContant={capitalize(list.type)}
             image={{
-              borderRadius: pageName == "popularArtists" ? 50 : 1,
+              borderRadius: pageName == "Popular Artists" ? 50 : 1,
               imgUrl: list.images[0].url,
             }}
           ></ArtistCard>

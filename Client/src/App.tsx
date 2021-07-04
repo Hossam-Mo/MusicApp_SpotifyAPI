@@ -61,11 +61,14 @@ function App() {
           <Leftslide></Leftslide>
 
           <Switch>
+            <Route exact path="/seeAll/:pageName">
+              <SeeAll></SeeAll>
+            </Route>
+            <Route exact path="/seeAll/:pageName/:id">
+              <SeeAll></SeeAll>
+            </Route>
             <Route exact path="/:type/:id">
               <SecPage></SecPage>
-            </Route>
-            <Route exact path="/:pageName">
-              <SeeAll></SeeAll>
             </Route>
             <Route exact path="/">
               <MainPage></MainPage>

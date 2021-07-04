@@ -9,7 +9,7 @@ export default function useAll(prames) {
   useEffect(() => {
     if (Spotfiy && prames) {
       switch (prames) {
-        case "popularArtists": {
+        case "Popular Artists": {
           Spotfiy.getArtists([
             "5WUlDfRSoLAfcVSX1WnrxN",
             "66CXWjxzNUsdJxJ2JdwvnR",
