@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import lists from "../types/lists";
 import artists from "../types/artists";
 import album from "../types/albums";
-import { IoFileTrayStackedSharp } from "react-icons/io5";
 export default function useMainRows() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [artist, setArtist] = useState<artists[]>();
