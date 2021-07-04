@@ -28,10 +28,6 @@ export default function CardsRows({
   const row = useRef<HTMLDivElement>(null);
   const prames = useParams<prames>();
 
-  useEffect(() => {
-    console.log(prames);
-  }, [prames]);
-
   const seeAllUrl = () => {
     function isEmpty(obj) {
       return Object.keys(obj).length === 0;
