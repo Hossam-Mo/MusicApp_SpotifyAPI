@@ -10,7 +10,7 @@ interface prames {
 }
 export default function SeeAll() {
   const prames = useParams<prames>();
-  const lists = useAll(prames.pageName);
+  const lists = useAll(prames.pageName, prames.id);
 
   useEffect(() => {
     console.log(prames);
