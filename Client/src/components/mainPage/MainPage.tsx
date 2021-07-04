@@ -9,15 +9,13 @@ export default function MainPage() {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
 
   const rows = useMainRows();
-  useEffect(() => {
-    console.log(rows);
-  }, [rows]);
 
   return (
     <div className="mainPage">
       {rows.map((row, index) => {
         return (
           <CardsRows
+            key={index}
             imgBorder={row.lists && row.lists[index].type == "artist" ? 50 : 2}
             title={row.name}
             lists={row.lists}
@@ -25,17 +23,6 @@ export default function MainPage() {
           ></CardsRows>
         );
       })}
-      {/*     <CardsRows
-        imgBorder={50}
-        title="Popular Artists"
-        lists={artist}
-      ></CardsRows>
-      <CardsRows
-        imgBorder={2}
-        title="Play Lists"
-        lists={playlists}
-        description={description}
-      ></CardsRows> */}
     </div>
   );
 }
