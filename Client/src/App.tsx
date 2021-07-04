@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
 import SecPage from "./components/secPage/SecPage";
-import logo from "./svgs/spotify.svg";
 const code = new URLSearchParams(window.location.search).get("code");
 const Spotfiy = new SpotifyWebApi({
   clientId: "4451beba5b2c42a4a9dbb72c109d2de5",
@@ -19,10 +18,6 @@ const Spotfiy = new SpotifyWebApi({
 function App() {
   const token = useAuth();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(logo);
-  }, []);
 
   useEffect(() => {
     if (token) {
@@ -73,8 +68,6 @@ function App() {
               <SeeAll></SeeAll>
             </Route>
             <Route exact path="/">
-              <img src={logo} alt="React Logo" />
-
               <MainPage></MainPage>
             </Route>
           </Switch>
