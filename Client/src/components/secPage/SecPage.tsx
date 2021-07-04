@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 import { useParams } from "react-router-dom";
 import useSecPage from "../../hooks/useSecPage";
 import SecCover from "./secCover/SecCover";
