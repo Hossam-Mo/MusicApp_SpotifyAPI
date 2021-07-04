@@ -13,7 +13,7 @@ export default function SeeAll() {
   const lists = useAll(prames.pageName, prames.id);
 
   useEffect(() => {
-    console.log(prames);
+    window.scrollTo(0, 0);
   }, [prames]);
 
   const capitalize = (s) => {
