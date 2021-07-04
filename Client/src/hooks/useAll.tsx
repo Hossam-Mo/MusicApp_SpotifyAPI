@@ -22,6 +22,11 @@ export default function useAll(pageName, id) {
               "6M2wZ9GZgrQXHCFfjv46we",
               "7dGJo4pcD2V6oG8kP0tJRR",
               "1Xyo4u8uXC1ZmMpatF05PJ",
+              "5p7f24Rk5HkUZsaS3BLG5F",
+              "1r4hJ1h58CWwUQe3MxPuau",
+              "0X2BH1fck6amBIoJhDVmmJ",
+              "1zNqDE7qDGCsyzJwohVaoX",
+              "4ScCswdRlyA23odg9thgIO",
             ])
               .then((r: any) => {
                 setRes(r.body.artists);
