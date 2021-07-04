@@ -6,14 +6,15 @@ import "./seeAll.css";
 
 interface prames {
   pageName: string;
+  id?: string;
 }
 export default function SeeAll() {
-  const { pageName } = useParams<prames>();
-  const lists = useAll(pageName);
+  const prames = useParams<prames>();
+  const lists = useAll(prames.pageName);
 
   useEffect(() => {
-    console.log(pageName);
-  }, []);
+    console.log(prames);
+  }, [prames]);
 
   const capitalize = (s) => {
     if (typeof s !== "string") return "";
@@ -30,7 +31,7 @@ export default function SeeAll() {
             mainContant={capitalize(list.name)}
             secondaryContant={capitalize(list.type)}
             image={{
-              borderRadius: pageName == "Popular Artists" ? 50 : 1,
+              borderRadius: prames.pageName == "Popular Artists" ? 50 : 1,
               imgUrl: list.images[0].url,
             }}
           ></ArtistCard>
