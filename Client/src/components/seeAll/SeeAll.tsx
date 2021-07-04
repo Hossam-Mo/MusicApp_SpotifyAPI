@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAll from "../../hooks/useAll";
 import ArtistCard from "../mainPage/artistCard/ArtistCard";
@@ -7,14 +6,10 @@ import "./seeAll.css";
 interface prames {
   pageName: string;
 }
-
 export default function SeeAll() {
   const { pageName } = useParams<prames>();
   const lists = useAll(pageName);
 
-  useEffect(() => {
-    console.log(lists);
-  }, [lists]);
   const capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);

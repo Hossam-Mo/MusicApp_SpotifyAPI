@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const code = new URLSearchParams(window.location.search).get("code");
-const homelink: any = "/";
 
 export default function useAuth() {
   const [accessToken, setAccessToken] = useState<string | null>(null);

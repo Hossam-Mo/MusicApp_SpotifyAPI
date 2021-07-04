@@ -39,7 +39,7 @@ export default function CardsRows({
           <h1>{title}</h1>
           {description && <h3>{description}</h3>}
         </div>
-        <Link to="/popularArtists">
+        <Link to={`/${"popularArtists/?id=213214235634"}`}>
           <p>See all</p>
         </Link>
       </div>
