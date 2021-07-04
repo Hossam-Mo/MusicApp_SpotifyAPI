@@ -41,7 +41,7 @@ export default function SecTracks({ tracks, lists }: props) {
             key={index}
             lists={row.list}
             title={row.name}
-            imgBorder={row.list && row.list[0].type == "artist" ? 50 : 1}
+            imgBorder={row.list && row.list[0].type == "artist" ? 50 : 2}
           ></CardsRows>
         );
       })}
