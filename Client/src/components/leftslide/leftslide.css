@@ -19,6 +19,9 @@
   background-color: black;
   margin: 10px;
 }
+.leftslide_main > a {
+  text-decoration: none;
+}
 
 .leftslid_logo {
   width: 133px;

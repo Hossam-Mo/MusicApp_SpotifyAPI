@@ -82,7 +82,10 @@ export default function Leftslide() {
         </Link>
 
         <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
-        <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
+        <Link to="/search">
+          <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
+        </Link>
+
         <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
         <LeftContant
           Icon={IoAdd}
