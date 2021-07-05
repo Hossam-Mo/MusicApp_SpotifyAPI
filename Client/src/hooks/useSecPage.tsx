@@ -74,6 +74,21 @@ export default function useSecPage(id: string, type: string) {
           .catch((err) => {
             console.log(err);
           });
+      } else if (type.toLowerCase() == "category") {
+        Spotfiy.getCategory(id)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        Spotfiy.getPlaylistsForCategory(id)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     }
   }, [id, type]);

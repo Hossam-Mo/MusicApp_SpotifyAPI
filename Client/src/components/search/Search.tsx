@@ -19,13 +19,6 @@ export default function Search() {
       .catch((err) => {
         console.log(err);
       });
-    Spotify.getPlaylistsForCategory("toplists")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, [Spotify]);
 
   useEffect(() => {
