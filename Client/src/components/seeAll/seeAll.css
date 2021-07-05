@@ -5,3 +5,21 @@
   padding: 20px;
   min-height: 100vh;
 }
+.seeAll > a:nth-child(1) {
+  flex: 1 1 40%;
+}
+.seeAll > a:nth-child(2) {
+  flex: 1 1 40%;
+}
+.seeAll > a > div > img {
+  height: unset;
+}
+
+@media (max-width: 1000px) {
+  .seeAll > a:nth-child(1) {
+    flex: 1 1 100%;
+  }
+  .seeAll > a:nth-child(2) {
+    flex: 1 1;
+  }
+}
