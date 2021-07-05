@@ -1,0 +1,15 @@
+.search {
+  flex: 1;
+  color: white;
+}
+.search > h1 {
+  padding: 20px;
+}
+
+.search_categories {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}

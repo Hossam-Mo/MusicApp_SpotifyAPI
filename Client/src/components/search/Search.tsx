@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import categories from "../../types/categories";
+import Category from "./category/Category";
 import "./search.css";
 
 export default function Search() {
@@ -10,7 +11,7 @@ export default function Search() {
   const [categories, setCategories] = useState<categories[]>();
 
   useEffect(() => {
-    Spotify.getCategories()
+    Spotify.getCategories({ limit: 50 })
       .then((res) => {
         console.log(res);
         setCategories(res.body.categories.items);
@@ -31,10 +32,19 @@ export default function Search() {
     console.log(categories);
   }, [categories]);
   return (
-    <div>
-      {categories?.map((item) => {
-        return item.name;
-      })}
+    <div className="search">
+      <h1>Browse all</h1>
+      <div className="search_categories">
+        {categories?.map((item) => {
+          return (
+            <Category
+              id={item.id}
+              name={item.name}
+              icons={item.icons}
+            ></Category>
+          );
+        })}
+      </div>
     </div>
   );
 }
