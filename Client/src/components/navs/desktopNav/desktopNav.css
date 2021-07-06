@@ -1,6 +1,7 @@
 .desktopNav {
   position: sticky;
   top: 0;
+  right: 0;
   color: white;
   padding: 20px;
   display: flex;

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import CardsRows from "./cardsRows/CardsRows";
 import "./mainPage.css";
 import useMainRows from "../../hooks/useMainRows";
+import DesktopNav from "../navs/desktopNav/DesktopNav";
 
 //imgBorder={row?.lists?[index].type=='artist' ? 50 :50}
 export default function MainPage() {
@@ -11,6 +12,7 @@ export default function MainPage() {
 
   return (
     <div className="mainPage">
+      <DesktopNav></DesktopNav>
       {rows.map((row, index) => {
         return (
           <CardsRows
