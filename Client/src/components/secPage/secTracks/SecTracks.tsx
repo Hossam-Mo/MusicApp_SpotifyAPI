@@ -6,6 +6,8 @@ import album from "../../../types/albums";
 import artists from "../../../types/artists";
 import lists from "../../../types/lists";
 import CardsRows from "../../mainPage/cardsRows/CardsRows";
+import { useParams } from "react-router-dom";
+import { preProcessFile } from "typescript";
 
 interface rows {
   name: string;
@@ -16,12 +18,19 @@ interface props {
   tracks?: tracks[];
   lists?: rows[];
 }
+interface params {
+  type: string;
+  id: string;
+}
 
 export default function SecTracks({ tracks, lists }: props) {
+  const params = useParams<params>();
+  console.log(params);
   return (
     <div className="secTracks">
-      <SecAdd></SecAdd>
-      <h3>Tracks</h3>
+      {params.type != "category" && <SecAdd></SecAdd>}
+      {params.type != "category" && <h3>Tracks</h3>}
+
       {tracks?.map((track, index) => {
         return (
           <SecTrack
