@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import categories from "../../types/categories";
+import DesktopNav from "../navs/desktopNav/DesktopNav";
 import Category from "./category/Category";
 import "./search.css";
 
@@ -13,7 +14,6 @@ export default function Search() {
   useEffect(() => {
     Spotify.getCategories({ limit: 50 })
       .then((res) => {
-        console.log(res);
         setCategories(res.body.categories.items);
       })
       .catch((err) => {
@@ -21,16 +21,15 @@ export default function Search() {
       });
   }, [Spotify]);
 
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
   return (
     <div className="search">
+      <DesktopNav></DesktopNav>
       <h1>Browse all</h1>
       <div className="search_categories">
         {categories?.map((item) => {
           return (
             <Category
+              key={item.id}
               id={item.id}
               name={item.name}
               icons={item.icons}
