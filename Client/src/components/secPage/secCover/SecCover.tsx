@@ -27,7 +27,7 @@ export default function SecCover({ info }: props) {
         ) : info?.type == "Category" ? (
           <div></div>
         ) : (
-          <div>
+          <div className="secCover_releseDate">
             <p>Release Date: {info?.release_date}</p>
           </div>
         )}
