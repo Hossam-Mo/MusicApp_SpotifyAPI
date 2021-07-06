@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { IoReorderThreeOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
 export default function useAll(pageName, id) {
@@ -111,6 +112,16 @@ export default function useAll(pageName, id) {
                 console.log(err);
               });
 
+            return;
+          }
+          case "PlayLists": {
+            Spotfiy.getPlaylistsForCategory(id, { limit: 50 })
+              .then((res) => {
+                setRes(res.body.playlists.items);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             return;
           }
           default:
