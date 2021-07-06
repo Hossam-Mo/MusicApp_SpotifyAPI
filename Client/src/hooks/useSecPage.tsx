@@ -109,7 +109,7 @@ export default function useSecPage(id: string, type: string) {
 
   return {
     info,
-    tracks,
+    tracks: type.toLowerCase() === "category" ? undefined : tracks,
     lists:
       type.toLowerCase() === "artist"
         ? [
