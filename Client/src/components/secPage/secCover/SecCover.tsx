@@ -24,6 +24,8 @@ export default function SecCover({ info }: props) {
             <p>{info?.description}</p>
             <p>Followers: {info?.followers.total}</p>
           </div>
+        ) : info?.type == "Category" ? (
+          <div></div>
         ) : (
           <div>
             <p>Release Date: {info?.release_date}</p>

@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function useSecPage(id: string, type: string) {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState<any>();
   const [tracks, setTracks] = useState();
   const [albums, setAlbums] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
+  const [categoryLists, setCategoryLists] = useState();
   const user = useSelector((state: any) => state.user);
   const Spotfiy = useSelector((state: any) => {
     return state.spotfiy;
@@ -78,13 +79,26 @@ export default function useSecPage(id: string, type: string) {
         Spotfiy.getCategory(id)
           .then((res) => {
             console.log(res);
+            setInfo({
+              name: res.body.name,
+              id: res.body.id,
+              type: "Category",
+              images: [
+                {
+                  height: res.body.icons[0].height,
+                  url: res.body.icons[0].url,
+                  width: res.body.icons[0].width,
+                },
+              ],
+            });
           })
           .catch((err) => {
             console.log(err);
           });
         Spotfiy.getPlaylistsForCategory(id)
           .then((res) => {
-            console.log(res);
+            console.log(res.body.playlists.items);
+            setCategoryLists(res.body.playlists.items);
           })
           .catch((err) => {
             console.log(err);
@@ -102,6 +116,8 @@ export default function useSecPage(id: string, type: string) {
             { name: "Albums", list: albums },
             { name: "Related Artist", list: relatedArtists },
           ]
+        : type.toLowerCase() === "category"
+        ? [{ name: "PlayLists", list: categoryLists }]
         : undefined,
   };
 }
