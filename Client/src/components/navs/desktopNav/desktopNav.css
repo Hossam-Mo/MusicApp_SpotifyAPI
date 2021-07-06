@@ -8,12 +8,34 @@
   justify-content: space-between;
   z-index: 10;
 }
+.desktopNav_input {
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 50px;
+}
+.desktopNav_input > input {
+  border: none;
+  outline: none;
+  padding: 10px 0;
+  padding-right: 50px;
+  border-radius: 50px;
+  font-family: "lora";
+  width: 200px;
+}
+.desktopNav_input > svg {
+  margin: 0 10px;
+}
 .desktopNav_user {
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 50px;
   background-color: black;
+  cursor: pointer;
 }
 
 .desktopNav_user > img {

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import "./desktopNav.css";
+import { BsSearch } from "react-icons/bs";
 
 export default function DesktopNav() {
   const Spotify = useSelector((state: any) => state.spotfiy);
@@ -18,8 +19,9 @@ export default function DesktopNav() {
       }}
     >
       {location.pathname === "/search" ? (
-        <div>
-          <input />
+        <div className="desktopNav_input">
+          <BsSearch></BsSearch>
+          <input placeholder="Artists, Songs, or Prodcasts" />
         </div>
       ) : (
         <div></div>
