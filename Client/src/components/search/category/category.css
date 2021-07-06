@@ -10,6 +10,7 @@
   background-size: cover;
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 }
 .category:hover {
   transform: scale(1.1);
