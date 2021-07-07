@@ -4,13 +4,15 @@ import { useLocation } from "react-router-dom";
 import "./desktopNav.css";
 import { BsSearch } from "react-icons/bs";
 
-export default function DesktopNav() {
-  const [searchInput, setSearchInput] = useState("");
+interface props {
+  searchInput?: string;
+  setSearchInput?: (set) => void;
+}
+
+export default function DesktopNav({ searchInput, setSearchInput }: props) {
   const user = useSelector((state: any) => state.user);
   const location = useLocation();
-  useEffect(() => {
-    console.log(searchInput);
-  }, [searchInput]);
+
   return (
     <div
       className="desktopNav"
@@ -24,7 +26,7 @@ export default function DesktopNav() {
           <input
             value={searchInput}
             onChange={(e) => {
-              setSearchInput(e.target.value);
+              if (setSearchInput) setSearchInput(e.target.value);
             }}
             placeholder="Artists, Songs, or Prodcasts"
           />

@@ -8,7 +8,7 @@ import "./search.css";
 
 export default function Search() {
   const Spotify = useSelector((state: any) => state.spotfiy);
-
+  const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState<categories[]>();
 
   useEffect(() => {
@@ -21,9 +21,15 @@ export default function Search() {
       });
   }, [Spotify]);
 
+  useEffect(() => {
+    console.log(searchInput);
+  }, [searchInput]);
   return (
     <div className="search">
-      <DesktopNav></DesktopNav>
+      <DesktopNav
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      ></DesktopNav>
       <h1>Browse all</h1>
       <div className="search_categories">
         {categories?.map((item) => {
