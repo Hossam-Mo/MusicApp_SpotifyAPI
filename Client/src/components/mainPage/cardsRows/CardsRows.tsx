@@ -48,6 +48,9 @@ export default function CardsRows({
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
+  useEffect(() => {
+    console.log(lists);
+  }, [lists]);
   return (
     <div className="cardRows">
       <div className="cardRows_title">
@@ -70,7 +73,7 @@ export default function CardsRows({
               secondaryContant={capitalize(list.type)}
               image={{
                 borderRadius: imgBorder,
-                imgUrl: list.images[0].url,
+                imgUrl: list.images[0]?.url,
               }}
             ></ArtistCard>
           );
