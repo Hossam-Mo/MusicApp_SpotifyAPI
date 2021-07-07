@@ -7,6 +7,10 @@ import CardsRows from "../mainPage/cardsRows/CardsRows";
 import DesktopNav from "../navs/desktopNav/DesktopNav";
 import Category from "./category/Category";
 import "./search.css";
+/* import artists from "../../types/artists";
+import lists from "../../types/lists";
+import album from "../../types/albums";
+import tracks from "../../types/tracks"; */
 
 export default function Search() {
   const Spotify = useSelector((state: any) => state.spotfiy);
@@ -25,11 +29,9 @@ export default function Search() {
         });
     }
   }, [Spotify]);
-  /*   useEffect(() => {
-    for (const key in searchLists) {
-      console.log(`${key}: ${searchLists[key]}`);
-    }
-  }, [searchLists]); */
+  useEffect(() => {
+    console.log(searchLists);
+  }, [searchLists]);
 
   return (
     <div className="search">
@@ -37,7 +39,6 @@ export default function Search() {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       ></DesktopNav>
-
       {searchLists?.map((list) => {
         return (
           <CardsRows
