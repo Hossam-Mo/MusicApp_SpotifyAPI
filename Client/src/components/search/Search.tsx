@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import useSearch from "../../hooks/useSearch";
 import categories from "../../types/categories";
 import DesktopNav from "../navs/desktopNav/DesktopNav";
 import Category from "./category/Category";
@@ -10,6 +11,7 @@ export default function Search() {
   const Spotify = useSelector((state: any) => state.spotfiy);
   const [searchInput, setSearchInput] = useState("");
   const [categories, setCategories] = useState<categories[]>();
+  const searchLists = useSearch(searchInput);
 
   useEffect(() => {
     if (Spotify) {
@@ -22,6 +24,9 @@ export default function Search() {
         });
     }
   }, [Spotify]);
+  useEffect(() => {
+    console.log(searchLists);
+  }, [searchLists]);
 
   return (
     <div className="search">
