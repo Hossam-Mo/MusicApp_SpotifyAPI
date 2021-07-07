@@ -78,7 +78,6 @@ export default function useSecPage(id: string, type: string) {
       } else if (type.toLowerCase() == "category") {
         Spotfiy.getCategory(id)
           .then((res) => {
-            console.log(res);
             setInfo({
               name: res.body.name,
               id: res.body.id,
@@ -97,7 +96,6 @@ export default function useSecPage(id: string, type: string) {
           });
         Spotfiy.getPlaylistsForCategory(id)
           .then((res) => {
-            console.log(res.body.playlists.items);
             setCategoryLists(res.body.playlists.items);
           })
           .catch((err) => {

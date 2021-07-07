@@ -7,7 +7,6 @@ import artists from "../../../types/artists";
 import lists from "../../../types/lists";
 import CardsRows from "../../mainPage/cardsRows/CardsRows";
 import { useParams } from "react-router-dom";
-import { preProcessFile } from "typescript";
 
 interface rows {
   name: string;
@@ -25,7 +24,6 @@ interface params {
 
 export default function SecTracks({ tracks, lists }: props) {
   const params = useParams<params>();
-  console.log(params);
   return (
     <div className="secTracks">
       {params.type != "category" && <SecAdd></SecAdd>}
