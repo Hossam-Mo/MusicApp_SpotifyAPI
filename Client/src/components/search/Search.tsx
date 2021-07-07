@@ -12,18 +12,17 @@ export default function Search() {
   const [categories, setCategories] = useState<categories[]>();
 
   useEffect(() => {
-    Spotify.getCategories({ limit: 50 })
-      .then((res) => {
-        setCategories(res.body.categories.items);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (Spotify) {
+      Spotify.getCategories({ limit: 50 })
+        .then((res) => {
+          setCategories(res.body.categories.items);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, [Spotify]);
 
-  useEffect(() => {
-    console.log(searchInput);
-  }, [searchInput]);
   return (
     <div className="search">
       <DesktopNav
