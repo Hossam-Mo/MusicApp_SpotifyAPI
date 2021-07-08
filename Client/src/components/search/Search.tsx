@@ -30,9 +30,6 @@ export default function Search() {
         });
     }
   }, [Spotify]);
-  useEffect(() => {
-    console.log(searchLists);
-  }, [searchLists]);
 
   return (
     <div className="search">
