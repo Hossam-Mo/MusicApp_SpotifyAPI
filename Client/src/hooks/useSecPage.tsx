@@ -66,11 +66,22 @@ export default function useSecPage(id: string, type: string) {
         Spotfiy.getPlaylist(id)
           .then((res) => {
             setInfo(res.body);
-            setTracks(
+
+            let newTrack = res.body.tracks.items.filter((item) => {
+              if (item.track.album.images.length && item.track.id) {
+                return item;
+              }
+            });
+
+            newTrack = newTrack.map((item) => {
+              return item.track;
+            });
+            setTracks(newTrack);
+            /* console.log(
               res.body.tracks.items.map((item) => {
-                return item.track;
+                if (item.track.album.images.length) return item.track;
               })
-            );
+            ); */
           })
           .catch((err) => {
             console.log(err);
