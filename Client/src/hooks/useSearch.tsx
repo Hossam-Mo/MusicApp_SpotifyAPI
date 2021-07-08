@@ -63,6 +63,7 @@ export default function useSearch(input: string) {
         });
     } else {
       setRes(undefined);
+      setTracks(undefined);
     }
   }, [Spotfiy, input]);
 
