@@ -26,8 +26,8 @@ export default function SecTracks({ tracks, lists }: props) {
   const params = useParams<params>();
   return (
     <div className="secTracks">
-      {params.type != "category" && <SecAdd></SecAdd>}
-      {params.type != "category" && <h3>Tracks</h3>}
+      {params.type != "category" && tracks?.length ? <SecAdd></SecAdd> : null}
+      {params.type != "category" && tracks?.length ? <h3>Tracks</h3> : null}
 
       {tracks?.map((track, index) => {
         return (
@@ -43,14 +43,20 @@ export default function SecTracks({ tracks, lists }: props) {
         );
       })}
       {lists?.map((row, index) => {
-        return (
-          <CardsRows
-            key={index}
-            lists={row.list}
-            title={row.name}
-            imgBorder={row.list && row.list[0].type == "artist" ? 50 : 2}
-          ></CardsRows>
-        );
+        if (row.list?.length) {
+          return (
+            <CardsRows
+              key={index}
+              lists={row.list?.length ? row.list : undefined}
+              title={row.list?.length ? row.name : undefined}
+              imgBorder={
+                row.list?.length && row.list[0].type == "artist" ? 50 : 2
+              }
+            ></CardsRows>
+          );
+        } else {
+          return null;
+        }
       })}
     </div>
   );

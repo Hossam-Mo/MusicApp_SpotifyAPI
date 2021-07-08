@@ -12,7 +12,9 @@ export default function SecCover({ info }: props) {
   return (
     <div className="secCover">
       <img
-        src={info?.images[0].url || "/asset/defulatImage.png"}
+        src={
+          info?.images.length ? info?.images[0].url : "/asset/defulatImage.png"
+        }
         alt={info?.name}
       ></img>
       <div className="secCover_contant">

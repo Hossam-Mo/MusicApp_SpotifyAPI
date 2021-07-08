@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 interface props {
-  title: string;
+  title: string | undefined;
   description?: string;
   lists: artists[] | lists[] | album[] | undefined;
   imgBorder: number | string;
