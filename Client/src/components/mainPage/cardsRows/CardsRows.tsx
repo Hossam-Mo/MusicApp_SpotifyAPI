@@ -48,9 +48,6 @@ export default function CardsRows({
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
-  useEffect(() => {
-    console.log(lists);
-  }, [lists]);
   return (
     <div className="cardRows">
       <div className="cardRows_title">
