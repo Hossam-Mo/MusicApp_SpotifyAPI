@@ -53,9 +53,10 @@ export default function Search() {
           ></SecTrack>
         );
       })}
-      {searchLists?.lists?.map((list) => {
+      {searchLists?.lists?.map((list, index) => {
         return (
           <CardsRows
+            key={index}
             imgBorder={list.name == "artists" ? 50 : 2}
             title={list.name}
             lists={list.list}
