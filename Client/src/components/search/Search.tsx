@@ -5,6 +5,7 @@ import useSearch from "../../hooks/useSearch";
 import categories from "../../types/categories";
 import CardsRows from "../mainPage/cardsRows/CardsRows";
 import DesktopNav from "../navs/desktopNav/DesktopNav";
+import SecTrack from "../secPage/secTracks/secTack/SecTrack";
 import Category from "./category/Category";
 import "./search.css";
 /* import artists from "../../types/artists";
@@ -39,6 +40,22 @@ export default function Search() {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       ></DesktopNav>
+      {searchLists.tracks && (
+        <h1 style={{ fontSize: 24, fontWeight: 700 }}>Songs</h1>
+      )}
+      {searchLists?.tracks?.map((track, index) => {
+        return (
+          <SecTrack
+            key={track.id}
+            id={track.id}
+            type={track.type}
+            duration_ms={track.duration_ms}
+            name={track.name}
+            album={track.album}
+            number={index + 1}
+          ></SecTrack>
+        );
+      })}
       {searchLists?.lists?.map((list) => {
         return (
           <CardsRows
@@ -49,7 +66,6 @@ export default function Search() {
         );
       })}
 
-      {searchLists?.tracks?.map((track) => {})}
       <h1>Browse all</h1>
       <div className="search_categories">
         {categories?.map((item) => {
