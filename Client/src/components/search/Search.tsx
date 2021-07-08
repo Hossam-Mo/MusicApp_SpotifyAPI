@@ -48,6 +48,8 @@ export default function Search() {
           ></CardsRows>
         );
       })}
+
+      {searchLists?.tracks?.map((track) => {})}
       <h1>Browse all</h1>
       <div className="search_categories">
         {categories?.map((item) => {

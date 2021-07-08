@@ -8,7 +8,7 @@ import tracks from "../types/tracks";
 export default function useSearch(input: string) {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [res, setRes] = useState<any>();
-  const [tracks, setTracks] = useState();
+  const [tracks, setTracks] = useState<tracks[]>();
 
   const searchListsRander = (obj) => {
     interface newList {
