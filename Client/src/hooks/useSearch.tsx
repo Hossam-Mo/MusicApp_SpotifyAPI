@@ -8,11 +8,12 @@ import tracks from "../types/tracks";
 export default function useSearch(input: string) {
   const Spotfiy = useSelector((state: any) => state.spotfiy);
   const [res, setRes] = useState<any>();
+  const [tracks, setTracks] = useState();
 
   const searchListsRander = (obj) => {
     interface newList {
       name: string;
-      list: artists | lists | album | tracks;
+      list: artists[] | lists[] | album[] | tracks[];
     }
     const capitalize = (s) => {
       if (typeof s !== "string") return "";
@@ -38,14 +39,6 @@ export default function useSearch(input: string) {
       );
     }
 
-    /* item.list.filter((it) => {
-        if (it.images.length == 0) {
-          console.log("url is null");
-          return null;
-        } else {
-          return it;
-        }
-      }); */
     console.log(secLists);
     return newLists;
   };
@@ -56,6 +49,14 @@ export default function useSearch(input: string) {
           console.log(res);
 
           setRes(searchListsRander(res.body));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      Spotfiy.searchTracks(input, { limit: 5 })
+        .then((res) => {
+          console.log(res);
+          setTracks(res.body.tracks.items);
         })
         .catch((err) => {
           console.log(err);
