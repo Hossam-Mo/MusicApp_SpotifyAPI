@@ -24,13 +24,11 @@ export default function useSearch(input: string) {
     for (const key in obj) {
       newLists.push({ name: capitalize(key), list: obj[key].items });
     }
-    console.log(newLists);
 
     for (let i in newLists) {
       secLists.push(
         newLists[i].list.filter((it) => {
           if (it.images.length == 0) {
-            console.log("url is null");
             return null;
           } else {
             return { name: newLists[i].name, list: it };
@@ -39,15 +37,12 @@ export default function useSearch(input: string) {
       );
     }
 
-    console.log(secLists);
     return newLists;
   };
   useEffect(() => {
     if (Spotfiy && input !== "") {
       Spotfiy.search(input, ["playlist", "artist", "album"])
         .then((res) => {
-          console.log(res);
-
           setRes(searchListsRander(res.body));
         })
         .catch((err) => {
@@ -55,7 +50,6 @@ export default function useSearch(input: string) {
         });
       Spotfiy.searchTracks(input, { limit: 5 })
         .then((res) => {
-          console.log(res);
           setTracks(res.body.tracks.items);
         })
         .catch((err) => {
