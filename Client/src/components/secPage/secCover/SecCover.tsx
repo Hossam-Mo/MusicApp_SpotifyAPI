@@ -11,7 +11,10 @@ const capitalize = (s) => {
 export default function SecCover({ info }: props) {
   return (
     <div className="secCover">
-      <img src={info?.images[0].url} alt={info?.name}></img>
+      <img
+        src={info?.images[0].url || "/asset/defulatImage.png"}
+        alt={info?.name}
+      ></img>
       <div className="secCover_contant">
         <h3>{capitalize(info?.type)}</h3>
         <h1>{info?.name}</h1>

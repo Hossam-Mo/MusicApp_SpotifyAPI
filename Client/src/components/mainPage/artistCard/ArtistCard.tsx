@@ -19,12 +19,11 @@ export default function ArtistCard({
 }: props) {
   return (
     <Link className="artistCard" to={`/${secondaryContant}/${id}`}>
-      {" "}
       <div className="artistCard_Main">
         <img
           className="artistCard_img"
           style={{ borderRadius: `${image.borderRadius}%` }}
-          src={image.imgUrl}
+          src={image.imgUrl || "/asset/defulatImage.png"}
           alt={mainContant}
         ></img>
         <button>
