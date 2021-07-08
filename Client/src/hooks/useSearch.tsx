@@ -66,5 +66,5 @@ export default function useSearch(input: string) {
     }
   }, [Spotfiy, input]);
 
-  return res;
+  return { lists: res, tracks };
 }

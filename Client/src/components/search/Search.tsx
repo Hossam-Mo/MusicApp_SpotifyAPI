@@ -39,7 +39,7 @@ export default function Search() {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       ></DesktopNav>
-      {searchLists?.map((list) => {
+      {searchLists?.lists?.map((list) => {
         return (
           <CardsRows
             imgBorder={list.name == "artists" ? 50 : 2}
