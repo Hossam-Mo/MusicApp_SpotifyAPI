@@ -57,7 +57,7 @@ export default function Search() {
         return (
           <CardsRows
             key={index}
-            imgBorder={list.name == "artists" ? 50 : 2}
+            imgBorder={list.name == "Artists" ? 50 : 2}
             title={list.name}
             lists={list.list}
             seeAll={false}
