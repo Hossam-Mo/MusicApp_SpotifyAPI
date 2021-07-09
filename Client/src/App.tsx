@@ -23,7 +23,6 @@ function App() {
   useEffect(() => {
     if (token) {
       Spotfiy.setAccessToken(token);
-
       dispatch({
         type: get_spotfiy.type,
         spotfiy: Spotfiy,
