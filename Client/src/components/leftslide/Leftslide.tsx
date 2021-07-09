@@ -81,7 +81,10 @@ export default function Leftslide() {
           </svg>
         </Link>
 
-        <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
+        <Link to="/">
+          <LeftContant Icon={AiOutlineHome} contant="Home"></LeftContant>
+        </Link>
+
         <Link to="/search">
           <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
         </Link>
