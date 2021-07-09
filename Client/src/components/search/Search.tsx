@@ -60,6 +60,7 @@ export default function Search() {
             imgBorder={list.name == "artists" ? 50 : 2}
             title={list.name}
             lists={list.list}
+            seeAll={false}
           ></CardsRows>
         );
       })}

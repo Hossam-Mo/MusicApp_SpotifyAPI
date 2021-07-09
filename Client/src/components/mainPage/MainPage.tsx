@@ -21,6 +21,7 @@ export default function MainPage() {
             title={row.name}
             lists={row.lists}
             description={row.description}
+            seeAll={true}
           ></CardsRows>
         );
       })}

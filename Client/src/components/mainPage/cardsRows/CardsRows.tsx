@@ -12,6 +12,7 @@ interface props {
   description?: string;
   lists: artists[] | lists[] | album[] | undefined;
   imgBorder: number | string;
+  seeAll:boolean;
 }
 
 interface prames {
@@ -24,6 +25,7 @@ export default function CardsRows({
   description,
   lists,
   imgBorder,
+  seeAll
 }: props) {
   const row = useRef<HTMLDivElement>(null);
   const prames = useParams<prames>();
@@ -55,9 +57,10 @@ export default function CardsRows({
           <h1>{title}</h1>
           {description && <h3>{description}</h3>}
         </div>
-        <Link to={`/seeAll/${seeAllUrl()}`}>
+        {seeAll &&  <Link to={`/seeAll/${seeAllUrl()}`}>
           <p>See all</p>
-        </Link>
+        </Link>}
+       
       </div>
 
       <div ref={row} className="cardRows_cards">

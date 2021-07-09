@@ -52,6 +52,7 @@ export default function SecTracks({ tracks, lists }: props) {
               imgBorder={
                 row.list?.length && row.list[0].type == "artist" ? 50 : 2
               }
+              seeAll={true}
             ></CardsRows>
           );
         } else {
