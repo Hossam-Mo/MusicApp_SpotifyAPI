@@ -19,16 +19,24 @@ export default function SecPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [prames]);
+useEffect(() => {
+
+  console.log(lists)
+  
+
+}, [lists])
+
+
 
   return (
     <div className="secPage">
-      <div className="secPage_background"></div>
-      {/*      <div
-        style={{ backgroundImage: `url(${coverImage?.images[0].url})` }}
-        className="secPage_cover"
-      ></div> */}
-      <SecCover info={lists?.info}></SecCover>
-      <SecTracks tracks={lists?.tracks} lists={lists?.lists}></SecTracks>
+
+      {
+        lists.info? <div>    <div className="secPage_background"></div>
+        <SecCover info={lists?.info}></SecCover>
+        <SecTracks tracks={lists?.tracks} lists={lists?.lists}></SecTracks></div>: <div> Sorry we could not find this page</div>
+      }
+      
     </div>
   );
 }
