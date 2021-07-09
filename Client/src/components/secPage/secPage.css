@@ -24,7 +24,17 @@
   z-index: -1;
 }
 
-.s {
-  background-color: rgba(0, 0, 0, 0.2);
+.secPage_404Page{
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.secPage_logo{
+  width: 200px;
+margin: 50px;
+object-fit: contain;
+
 }
