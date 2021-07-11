@@ -16,6 +16,7 @@ export default function SecTrack({
   id,
   album,
   number,
+  preview_url,
 }: tracks) {
   const prames = useParams<prames>();
 
@@ -27,7 +28,12 @@ export default function SecTrack({
   };
 
   return (
-    <div className="secTrack">
+    <div
+      onClick={() => {
+        console.log(preview_url);
+      }}
+      className="secTrack"
+    >
       <div className="secTrack_name">
         <p>{number}</p>
         <IoPlaySharp></IoPlaySharp>
