@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const SpotfiyApi = require("spotify-web-api-node");
-
+const { getAudioDurationInSeconds } = require("get-audio-duration");
 const app = express();
 
 app.use(cors());
@@ -10,7 +10,12 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ mess: "its working" });
 });
-
+app.post("/audioDuraction", (req, res) => {
+  getAudioDurationInSeconds(req.body.url).then((duration) => {
+    console.log(duration);
+    res.json(duration);
+  });
+});
 app.post("/login", (req, res) => {
   if (req.body.code) {
     const spotfiyApi = new SpotfiyApi({
