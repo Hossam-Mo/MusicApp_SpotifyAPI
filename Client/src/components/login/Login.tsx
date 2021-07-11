@@ -1,6 +1,7 @@
 import "./login.css";
 const authUrl =
-  "https://accounts.spotify.com/authorize?client_id=4451beba5b2c42a4a9dbb72c109d2de5&response_type=code&redirect_uri=http://localhost:3000/&scope=user-read-private%20user-read-email%20user-read-recently-played";
+  "https://accounts.spotify.com/authorize?client_id=4451beba5b2c42a4a9dbb72c109d2de5&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+// "https://accounts.spotify.com/authorize?client_id=4451beba5b2c42a4a9dbb72c109d2de5&response_type=code&redirect_uri=http://localhost:3000/&scope=user-read-private%20user-read-email%20user-read-recently-played";
 
 export default function Login() {
   return (
