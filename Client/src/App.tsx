@@ -11,6 +11,7 @@ import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
 import SecPage from "./components/secPage/SecPage";
 import Search from "./components/search/Search";
+import SpotifyPlayer from "react-spotify-web-playback";
 const code = new URLSearchParams(window.location.search).get("code");
 const Spotfiy = new SpotifyWebApi({
   clientId: "4451beba5b2c42a4a9dbb72c109d2de5",
@@ -75,6 +76,14 @@ function App() {
               <MainPage></MainPage>
             </Route>
           </Switch>
+          {token && (
+            <div className="app_player">
+              <SpotifyPlayer
+                token={token}
+                uris={["spotify:track:3e7sxremeOE3wTySiOhGiP"]}
+              />
+            </div>
+          )}
         </Router>
       ) : (
         <Login></Login>

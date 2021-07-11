@@ -1,3 +1,10 @@
 .App {
   display: flex;
 }
+
+.app_player {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
