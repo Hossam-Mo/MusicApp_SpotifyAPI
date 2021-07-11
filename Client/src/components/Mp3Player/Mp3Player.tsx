@@ -2,41 +2,35 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
+
 import "./mp3Player.css";
 
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
-  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement>();
-  const trackPlayer = useRef<HTMLAudioElement>(null);
+  const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
+
+  useEffect(() => {
+    console.log(url);
+    if (prAudio) {
+      prAudio.pause();
+      prAudio.load();
+    }
+    if (url) play();
+  }, [url]);
+
   const play = () => {
     if (url) {
-      if (currentAudio) {
-        currentAudio.pause();
-      }
-      let audio = new Audio(url);
-      setCurrentAudio(audio);
-      currentAudio?.play();
+      setPrAudio(url);
+      url.play();
     }
   };
   const pause = () => {
-    console.log(currentAudio);
-    currentAudio?.pause();
+    url?.pause();
   };
-  useEffect(() => {
-    console.log(url);
-    if (url) {
-      play();
-    }
-  }, [url]);
+
   return (
     <div className="mp3Player">
-      {url && (
-        <audio ref={trackPlayer}>
-          <source src={`${url}`}></source>
-        </audio>
-      )}
-
-      <button onClick={play}>Play</button>
+      <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
     </div>
   );

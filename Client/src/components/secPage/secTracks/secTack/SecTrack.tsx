@@ -6,6 +6,7 @@ import { IoPlaySharp } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { get_mp3Url } from "../../../../redux/actionTypes";
+import { useState } from "react";
 
 interface prames {
   type: string;
@@ -22,16 +23,16 @@ export default function SecTrack({
 }: tracks) {
   const prames = useParams<prames>();
   const dispatch = useDispatch();
+  const [audio] = useState(new Audio(preview_url));
 
   const play = () => {
     console.log(preview_url);
-    if (preview_url) {
-      console.log(get_mp3Url.type);
-      dispatch({
-        type: get_mp3Url.type,
-        url: preview_url,
-      });
-    }
+
+    console.log(audio.srcObject);
+    dispatch({
+      type: get_mp3Url.type,
+      audio: preview_url ? audio : null,
+    });
   };
 
   const millisToMinutesAndSeconds = (millis) => {
