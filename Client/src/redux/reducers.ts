@@ -20,7 +20,7 @@ export const getSpotfiy = (state = null, action: any) => {
 };
 const getMp3Url = (state = null, action: any) => {
   switch (action.type) {
-    case get_mp3Url:
+    case get_mp3Url.type:
       return action.url;
     default:
       return state;
@@ -30,5 +30,5 @@ const getMp3Url = (state = null, action: any) => {
 export const rootReducer = combineReducers({
   user: getUser,
   spotfiy: getSpotfiy,
-  mp3Url: getMp3Url,
+  url: getMp3Url,
 });

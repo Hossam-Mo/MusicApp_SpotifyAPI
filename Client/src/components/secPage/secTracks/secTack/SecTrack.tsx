@@ -24,11 +24,14 @@ export default function SecTrack({
   const dispatch = useDispatch();
 
   const play = () => {
-    if (preview_url)
+    console.log(preview_url);
+    if (preview_url) {
+      console.log(get_mp3Url.type);
       dispatch({
         type: get_mp3Url.type,
         url: preview_url,
       });
+    }
   };
 
   const millisToMinutesAndSeconds = (millis) => {
