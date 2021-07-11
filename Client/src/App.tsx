@@ -11,6 +11,7 @@ import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
 import SecPage from "./components/secPage/SecPage";
 import Search from "./components/search/Search";
+import Mp3Player from "./components/Mp3Player/Mp3Player";
 const code = new URLSearchParams(window.location.search).get("code");
 const Spotfiy = new SpotifyWebApi({
   clientId: "4451beba5b2c42a4a9dbb72c109d2de5",
@@ -59,7 +60,6 @@ function App() {
       {code ? (
         <Router>
           <Leftslide></Leftslide>
-
           <Switch>
             <Route exact path="/seeAll/:pageName/:id?">
               <SeeAll></SeeAll>
@@ -75,6 +75,7 @@ function App() {
               <MainPage></MainPage>
             </Route>
           </Switch>
+          <Mp3Player></Mp3Player>
         </Router>
       ) : (
         <Login></Login>
