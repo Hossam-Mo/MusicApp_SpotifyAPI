@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import { IoPlaySharp } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { get_mp3Url } from "../../../../redux/actionTypes";
 
 interface prames {
   type: string;
@@ -19,6 +21,15 @@ export default function SecTrack({
   preview_url,
 }: tracks) {
   const prames = useParams<prames>();
+  const dispatch = useDispatch();
+
+  const play = () => {
+    if (preview_url)
+      dispatch({
+        type: get_mp3Url.type,
+        url: preview_url,
+      });
+  };
 
   const millisToMinutesAndSeconds = (millis) => {
     var minutes = Math.floor(millis / 60000);
@@ -28,12 +39,7 @@ export default function SecTrack({
   };
 
   return (
-    <div
-      onClick={() => {
-        console.log(preview_url);
-      }}
-      className="secTrack"
-    >
+    <div onClick={play} className="secTrack">
       <div className="secTrack_name">
         <p>{number}</p>
         <IoPlaySharp></IoPlaySharp>
