@@ -6,6 +6,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "./mp3Player.css";
 import axios from "axios";
+import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
@@ -14,7 +15,12 @@ export default function Mp3Player() {
 
   useEffect(() => {
     console.log(url);
+    console.log(url.currentTime);
 
+    var minutes = Math.floor(url.currentTime / 60);
+    var seconds = url.currentTime - minutes * 60;
+
+    let a = `${minutes}:${seconds.toFixed(0)}`;
     if (url)
       axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
