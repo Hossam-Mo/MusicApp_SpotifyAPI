@@ -15,7 +15,7 @@ app.post("/audioDuraction", (req, res) => {
     var minutes = Math.floor(duration / 60);
     var seconds = duration - minutes * 60;
 
-    res.json(`${minutes}:${seconds}`);
+    res.json(`${minutes}:${seconds.toFixed(0)}`);
   });
 });
 app.post("/login", (req, res) => {
