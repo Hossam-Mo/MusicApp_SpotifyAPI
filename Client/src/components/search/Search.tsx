@@ -50,6 +50,7 @@ export default function Search() {
             name={track.name}
             album={track.album}
             number={index + 1}
+            preview_url={track.preview_url}
           ></SecTrack>
         );
       })}
