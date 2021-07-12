@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "./mp3Player.css";
+import axios from "axios";
 
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
@@ -12,6 +13,15 @@ export default function Mp3Player() {
 
   useEffect(() => {
     console.log(url);
+    if (url)
+      axios
+        .post("http://localhost:5000/audioDuraction", { url: url.src })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
     if (prAudio) {
       prAudio.pause();

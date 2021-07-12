@@ -12,8 +12,10 @@ app.get("/", (req, res) => {
 });
 app.post("/audioDuraction", (req, res) => {
   getAudioDurationInSeconds(req.body.url).then((duration) => {
-    console.log(duration);
-    res.json(duration);
+    var minutes = Math.floor(duration / 60);
+    var seconds = duration - minutes * 60;
+
+    res.json(`${minutes}:${seconds}`);
   });
 });
 app.post("/login", (req, res) => {
