@@ -10,6 +10,7 @@ import axios from "axios";
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
+  const [audioDur, setAudioDur] = useState<string>();
 
   useEffect(() => {
     console.log(url);
@@ -19,6 +20,7 @@ export default function Mp3Player() {
         .post("http://localhost:5000/audioDuraction", { url: url.src })
         .then((res) => {
           console.log(res);
+          setAudioDur(res.data);
           if (prAudio) {
             prAudio.pause();
             prAudio.load();
