@@ -15,12 +15,7 @@ export default function Mp3Player() {
 
   useEffect(() => {
     console.log(url);
-    console.log(url.currentTime);
 
-    var minutes = Math.floor(url.currentTime / 60);
-    var seconds = url.currentTime - minutes * 60;
-
-    let a = `${minutes}:${seconds.toFixed(0)}`;
     if (url)
       axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
@@ -48,11 +43,15 @@ export default function Mp3Player() {
     url?.pause();
   };
 
+  useEffect(() => {
+    console.log(audioDur);
+  }, [audioDur]);
   return (
     <div className="mp3Player">
       <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
-      <LinearProgress variant="determinate" value={50}></LinearProgress>
+      {/*   <LinearProgress variant="determinate" value={50}></LinearProgress> */}
+      <input type="range"></input>
     </div>
   );
 }
