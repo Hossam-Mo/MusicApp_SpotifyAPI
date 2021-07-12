@@ -13,21 +13,21 @@ export default function Mp3Player() {
 
   useEffect(() => {
     console.log(url);
+
     if (url)
       axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
         .then((res) => {
           console.log(res);
+          if (prAudio) {
+            prAudio.pause();
+            prAudio.load();
+          }
+          play();
         })
         .catch((err) => {
           console.log(err);
         });
-
-    if (prAudio) {
-      prAudio.pause();
-      prAudio.load();
-    }
-    if (url) play();
   }, [url]);
 
   const play = () => {
