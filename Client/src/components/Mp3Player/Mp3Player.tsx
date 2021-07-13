@@ -3,15 +3,15 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import LinearProgress from "@material-ui/core/LinearProgress";
-
 import "./mp3Player.css";
 import axios from "axios";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
   const [audioDur, setAudioDur] = useState<string>();
+  const [progress, setProgress] = useState<number>(0);
+  const progressBar = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     console.log(url);
@@ -36,22 +36,34 @@ export default function Mp3Player() {
   const play = () => {
     if (url) {
       setPrAudio(url);
+
+      /* progressBar?.current?.value  */
+
       url.play();
     }
   };
   const pause = () => {
     url?.pause();
+    console.log(url.currentTime);
   };
 
   useEffect(() => {
-    console.log(audioDur);
-  }, [audioDur]);
+    if (url) console.log(url.currentTime);
+  }, [url?.currentTime]);
   return (
     <div className="mp3Player">
       <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
       {/*   <LinearProgress variant="determinate" value={50}></LinearProgress> */}
-      <input type="range"></input>
+      <input
+        ref={progressBar}
+        type="range"
+        value={progress}
+        min="0"
+        onChange={(e) => {
+          setProgress(parseInt(e.target.value));
+        }}
+      ></input>
     </div>
   );
 }
