@@ -22,18 +22,19 @@ export default function Mp3Player() {
 
   useEffect(() => {
     if (url) {
+      cleanUp();
       console.log(url);
       const { duration } = url;
       console.log(duration);
       setAudioDur(duration);
 
       if (prAudio) {
+        cleanUp();
         prAudio.pause();
         prAudio.load();
       }
       play();
-
-      test();
+      playingAsong();
 
       /*   axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
@@ -56,8 +57,6 @@ export default function Mp3Player() {
     if (url) {
       setPrAudio(url);
 
-      /* progressBar?.current?.value  */
-
       url.play();
     }
   };
@@ -67,23 +66,27 @@ export default function Mp3Player() {
 
   const onScrub = (value) => {
     console.log(value);
-    if (intervalRef.current) clearInterval(intervalRef.current);
+
     if (url) {
       url.currentTime = value;
       setProgress(url.currentTime);
     }
   };
 
-  const test = () => {
+  const playingAsong = () => {
     if (url) {
       intervalRef.current = setInterval(() => {
         if (url.ended) {
           console.log("it did end");
+          cleanUp();
         } else {
           setProgress(url.currentTime);
         }
-      }, 1000);
+      }, 500);
     }
+  };
+  const cleanUp = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
