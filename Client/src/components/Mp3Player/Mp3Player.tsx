@@ -14,10 +14,17 @@ export default function Mp3Player() {
   const progressBar = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    console.log(url);
-
-    if (url)
-      axios
+    if (url) {
+      console.log(url);
+      const { duration } = url;
+      console.log(duration);
+      setAudioDur(duration);
+      if (prAudio) {
+        prAudio.pause();
+        prAudio.load();
+      }
+      play();
+      /*   axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
         .then((res) => {
           console.log(res);
@@ -30,7 +37,8 @@ export default function Mp3Player() {
         })
         .catch((err) => {
           console.log(err);
-        });
+        }); */
+    }
   }, [url]);
 
   const play = () => {
@@ -44,12 +52,8 @@ export default function Mp3Player() {
   };
   const pause = () => {
     url?.pause();
-    console.log(url.currentTime);
   };
 
-  useEffect(() => {
-    if (url) console.log(url.currentTime);
-  }, [url?.currentTime]);
   return (
     <div className="mp3Player">
       <button onClick={play}>play</button>
