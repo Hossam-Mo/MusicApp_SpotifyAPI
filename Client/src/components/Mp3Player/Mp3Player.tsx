@@ -12,6 +12,13 @@ export default function Mp3Player() {
   const [audioDur, setAudioDur] = useState<string>();
   const [progress, setProgress] = useState<number>(0);
   const progressBar = useRef<HTMLInputElement>(null);
+  const intervalRef = useRef<NodeJS.Timer>();
+
+  const getTime = (sec) => {
+    var minutes = Math.floor(sec / 60);
+    var seconds = sec - minutes * 60;
+    return `${minutes}:${seconds.toFixed(0)}`;
+  };
 
   useEffect(() => {
     if (url) {
@@ -19,11 +26,15 @@ export default function Mp3Player() {
       const { duration } = url;
       console.log(duration);
       setAudioDur(duration);
+
       if (prAudio) {
         prAudio.pause();
         prAudio.load();
       }
       play();
+
+      test();
+
       /*   axios
         .post("http://localhost:5000/audioDuraction", { url: url.src })
         .then((res) => {
@@ -54,6 +65,27 @@ export default function Mp3Player() {
     url?.pause();
   };
 
+  const onScrub = (value) => {
+    console.log(value);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (url) {
+      url.currentTime = value;
+      setProgress(url.currentTime);
+    }
+  };
+
+  const test = () => {
+    if (url) {
+      intervalRef.current = setInterval(() => {
+        if (url.ended) {
+          console.log("it did end");
+        } else {
+          setProgress(url.currentTime);
+        }
+      }, 1000);
+    }
+  };
+
   return (
     <div className="mp3Player">
       <button onClick={play}>play</button>
@@ -64,8 +96,10 @@ export default function Mp3Player() {
         type="range"
         value={progress}
         min="0"
+        step="1"
+        max={audioDur ? audioDur : `${audioDur}`}
         onChange={(e) => {
-          setProgress(parseInt(e.target.value));
+          onScrub(e.target.value);
         }}
       ></input>
     </div>
