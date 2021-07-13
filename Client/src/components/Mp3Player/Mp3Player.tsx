@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import "./mp3Player.css";
-import axios from "axios";
 
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
@@ -13,50 +11,6 @@ export default function Mp3Player() {
   const [progress, setProgress] = useState<number>(0);
   const progressBar = useRef<HTMLInputElement>(null);
   const intervalRef = useRef<NodeJS.Timer>();
-
-  const getTime = (sec) => {
-    var minutes = Math.floor(sec / 60);
-    var seconds = sec - minutes * 60;
-    return `${minutes}:${seconds.toFixed(0)}`;
-  };
-
-  useEffect(() => {
-    if (url) {
-      cleanUp();
-      console.log(url);
-      const { duration } = url;
-      console.log(duration);
-      setAudioDur(duration);
-
-      if (prAudio) {
-        cleanUp();
-        prAudio.pause();
-        prAudio.load();
-      }
-      play();
-      playingAsong();
-    }
-  }, [url]);
-
-  const play = () => {
-    if (url) {
-      setPrAudio(url);
-
-      url.play();
-    }
-  };
-  const pause = () => {
-    url?.pause();
-  };
-
-  const onScrub = (value) => {
-    console.log(value);
-
-    if (url) {
-      url.currentTime = value;
-      setProgress(url.currentTime);
-    }
-  };
 
   const playingAsong = () => {
     if (url) {
@@ -70,6 +24,50 @@ export default function Mp3Player() {
       }, 500);
     }
   };
+  const progressChange = (value) => {
+    console.log(value);
+
+    if (url) {
+      url.currentTime = value;
+      setProgress(url.currentTime);
+    }
+  };
+
+  const getTime = (sec) => {
+    var minutes = Math.floor(sec / 60);
+    var seconds = sec - minutes * 60;
+    return `${minutes}:${seconds.toFixed(0)}`;
+  };
+
+  useEffect(() => {
+    if (url) {
+      cleanUp();
+      const { duration } = url;
+      setAudioDur(duration);
+
+      play();
+      playingAsong();
+    }
+  }, [url]);
+  useEffect(() => {
+    if (prAudio) {
+      cleanUp();
+      prAudio.pause();
+      prAudio.load();
+    }
+  }, [prAudio]);
+
+  const play = () => {
+    if (url) {
+      setPrAudio(url);
+
+      url.play();
+    }
+  };
+  const pause = () => {
+    url?.pause();
+  };
+
   const cleanUp = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
@@ -87,7 +85,7 @@ export default function Mp3Player() {
         step="1"
         max={audioDur ? audioDur : `${audioDur}`}
         onChange={(e) => {
-          onScrub(e.target.value);
+          progressChange(e.target.value);
         }}
       ></input>
     </div>
