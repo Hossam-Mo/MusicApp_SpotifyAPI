@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import "./mp3Player.css";
-
+import { LinearProgress } from "@material-ui/core";
+import Slider from "@material-ui/core/Slider";
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
@@ -41,11 +42,8 @@ export default function Mp3Player() {
 
   useEffect(() => {
     if (url) {
-      console.log("this is ", url);
-
       const { duration } = url;
       setAudioDur(duration);
-
       play();
     }
     if (prAudio) {
@@ -56,6 +54,7 @@ export default function Mp3Player() {
 
   const play = () => {
     if (url) {
+      setProgress(0);
       setPrAudio(url);
       playingAsong();
       url.play();
@@ -66,16 +65,22 @@ export default function Mp3Player() {
   };
 
   const cleanUp = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    } else console.log("its not ex");
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
     <div className="mp3Player">
       <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
-      {/*   <LinearProgress variant="determinate" value={50}></LinearProgress> */}
+      <Slider
+        value={progress}
+        onChange={(e, v) => {
+          console.log(v);
+          progressChange(v);
+        }}
+        aria-labelledby="continuous-slider"
+      />
+
       <input
         ref={progressBar}
         type="range"
