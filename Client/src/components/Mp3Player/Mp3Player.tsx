@@ -83,7 +83,7 @@ export default function Mp3Player() {
         aria-labelledby="continuous-slider"
       />
 
-      <input
+      {/* <input
         ref={progressBar}
         type="range"
         value={progress}
@@ -93,7 +93,7 @@ export default function Mp3Player() {
         onChange={(e) => {
           progressChange(e.target.value);
         }}
-      ></input>
+      ></input> */}
     </div>
   );
 }
