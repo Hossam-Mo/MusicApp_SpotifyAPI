@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import "./mp3Player.css";
 import Slider from "@material-ui/core/Slider";
 import { getMp3Action } from "../../redux/reducers";
-import { parseJsonSourceFileConfigFileContent } from "typescript";
+import { BsVolumeUp } from "react-icons/bs";
 
 export default function Mp3Player() {
   const song = useSelector((state: getMp3Action) => state.song);
@@ -83,20 +83,21 @@ export default function Mp3Player() {
           <p>{song?.artist}</p>
         </div>
       </div>
-      <button onClick={play}>play</button>
-      <button onClick={pause}>Pause</button>
-      <Slider
-        max={audioDur ? audioDur : `${audioDur}`}
-        min={0}
-        value={progress}
-        onChange={(e, v) => {
-          console.log(v);
-          progressChange(v);
-        }}
-        aria-labelledby="continuous-slider"
-      />
+      <div className="mp3Player_mid">
+        <button onClick={play}>play</button>
+        <button onClick={pause}>Pause</button>
+        <Slider
+          max={audioDur ? audioDur : `${audioDur}`}
+          min={0}
+          value={progress}
+          onChange={(e, v) => {
+            console.log(v);
+            progressChange(v);
+          }}
+          aria-labelledby="continuous-slider"
+        />
 
-      {/* <input
+        {/* <input
         ref={progressBar}
         type="range"
         value={progress}
@@ -107,6 +108,11 @@ export default function Mp3Player() {
           progressChange(e.target.value);
         }}
       ></input> */}
+      </div>
+      <div className="mp3Player_end">
+        <BsVolumeUp></BsVolumeUp>
+        <Slider min={0} aria-labelledby="continuous-slider"></Slider>
+      </div>
     </div>
   );
 }

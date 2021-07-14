@@ -8,18 +8,14 @@
   z-index: 20;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   border-top: 1px solid #282828;
 }
 
-.mp3Player > .MuiSlider-root {
-  color: rgb(209, 209, 209);
-  width: 55%;
-  padding: 13px 0;
-  margin: 0 20px;
-}
 .mp3Player_start {
   display: flex;
   align-items: center;
+  flex: 0.2;
 }
 .mp3Player_start > div > h3 {
   font-weight: 500;
@@ -28,7 +24,7 @@
 }
 .mp3Player_start > div > p {
   font-size: 13px;
-  color: gray;
+  color: #b3b3b3;
 }
 .mp3Player_start > img {
   width: 56px;
@@ -37,4 +33,41 @@
   object-fit: contain;
   margin-right: 10px;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+}
+.mp3Player_mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mp3Player > .mp3Player_mid > .MuiSlider-root {
+  color: rgb(209, 209, 209);
+  width: 70%;
+  padding: 13px 0;
+  margin: 0 20px;
+}
+.mp3Player_end {
+  display: flex;
+  align-items: center;
+  flex: 0.2;
+  margin-right: 50px;
+  cursor: pointer;
+}
+.mp3Player_end > .MuiSlider-root {
+  color: #b3b3b3;
+  transition: color 0.3s ease-in;
+}
+.mp3Player_end > svg {
+  color: #b3b3b3;
+  width: 26px;
+  height: 27px;
+  margin-right: 5px;
+  transition: color 0.3s ease-in;
+}
+.mp3Player_end:hover > svg {
+  color: rgb(219, 219, 219);
+}
+.mp3Player_end:hover > .MuiSlider-root {
+  color: #2cba5f;
 }
