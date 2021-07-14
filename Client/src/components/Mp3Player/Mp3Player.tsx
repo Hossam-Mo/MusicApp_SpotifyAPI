@@ -8,7 +8,7 @@ import Slider from "@material-ui/core/Slider";
 export default function Mp3Player() {
   const url = useSelector((state: any) => state.url);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
-  const [audioDur, setAudioDur] = useState<string>();
+  const [audioDur, setAudioDur] = useState<any>();
   const [progress, setProgress] = useState<number>(0);
   const progressBar = useRef<HTMLInputElement>(null);
   const intervalRef = useRef<NodeJS.Timer>();
@@ -73,6 +73,8 @@ export default function Mp3Player() {
       <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
       <Slider
+        max={audioDur ? audioDur : `${audioDur}`}
+        min={0}
         value={progress}
         onChange={(e, v) => {
           console.log(v);
