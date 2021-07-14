@@ -35,7 +35,7 @@ export default function SecTrack({
         ? {
             audio,
             name,
-            image: album?.images[1].url,
+            imageUrl: album?.images[2].url,
             artist: album?.artists[0].name,
           }
         : null,

@@ -70,8 +70,19 @@ export default function Mp3Player() {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
+  useEffect(() => {
+    console.log(song);
+  }, [song]);
+
   return (
     <div className="mp3Player">
+      <div className="mp3Player_start">
+        <img src={song?.imageUrl} alt={song?.name}></img>
+        <div>
+          <h3>{song?.name}</h3>
+          <p>{song?.artist}</p>
+        </div>
+      </div>
       <button onClick={play}>play</button>
       <button onClick={pause}>Pause</button>
       <Slider
