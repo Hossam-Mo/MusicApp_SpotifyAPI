@@ -14,19 +14,19 @@ export default function Mp3Player() {
 
   const playingAsong = () => {
     if (url) {
+      cleanUp();
       intervalRef.current = setInterval(() => {
         if (url.ended) {
           console.log("it did end");
           cleanUp();
         } else {
+          console.log("s");
           setProgress(url.currentTime);
         }
-      }, 500);
+      }, 1000);
     }
   };
   const progressChange = (value) => {
-    console.log(value);
-
     if (url) {
       url.currentTime = value;
       setProgress(url.currentTime);
@@ -41,26 +41,23 @@ export default function Mp3Player() {
 
   useEffect(() => {
     if (url) {
-      cleanUp();
+      console.log("this is ", url);
+
       const { duration } = url;
       setAudioDur(duration);
 
       play();
-      playingAsong();
     }
-  }, [url]);
-  useEffect(() => {
     if (prAudio) {
-      cleanUp();
       prAudio.pause();
       prAudio.load();
     }
-  }, [prAudio]);
+  }, [url]);
 
   const play = () => {
     if (url) {
       setPrAudio(url);
-
+      playingAsong();
       url.play();
     }
   };
@@ -69,7 +66,9 @@ export default function Mp3Player() {
   };
 
   const cleanUp = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    } else console.log("its not ex");
   };
 
   return (
