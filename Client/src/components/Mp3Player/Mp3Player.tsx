@@ -6,7 +6,7 @@ import "./mp3Player.css";
 import Slider from "@material-ui/core/Slider";
 import { getMp3Action } from "../../redux/reducers";
 import { BsVolumeUp } from "react-icons/bs";
-
+import { IoPlaySharp } from "react-icons/io5";
 export default function Mp3Player() {
   const song = useSelector((state: getMp3Action) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
@@ -84,8 +84,10 @@ export default function Mp3Player() {
         </div>
       </div>
       <div className="mp3Player_mid">
-        <button onClick={play}>play</button>
-        <button onClick={pause}>Pause</button>
+        <button onClick={play}>
+          <IoPlaySharp />
+        </button>
+
         <Slider
           max={audioDur ? audioDur : `${audioDur}`}
           min={0}

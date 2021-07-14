@@ -15,7 +15,7 @@
 .mp3Player_start {
   display: flex;
   align-items: center;
-  flex: 0.2;
+  flex: 0.25;
 }
 .mp3Player_start > div > h3 {
   font-weight: 500;
@@ -41,6 +41,29 @@
   align-items: center;
   justify-content: center;
 }
+.mp3Player_mid > button {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.mp3Player_mid > button > svg {
+  height: 17px;
+  width: 17px;
+  margin-left: 2px;
+}
+.mp3Player_mid > button:hover {
+  transform: scale(1.1);
+}
+
 .mp3Player > .mp3Player_mid > .MuiSlider-root {
   color: rgb(209, 209, 209);
   width: 70%;
@@ -50,7 +73,7 @@
 .mp3Player_end {
   display: flex;
   align-items: center;
-  flex: 0.2;
+  flex: 0.25;
   margin-right: 50px;
   cursor: pointer;
 }
