@@ -6,13 +6,15 @@ import "./mp3Player.css";
 import Slider from "@material-ui/core/Slider";
 import { getMp3Action } from "../../redux/reducers";
 import { BsVolumeUp } from "react-icons/bs";
-import { IoPlaySharp } from "react-icons/io5";
+import { IoPlaySharp, IoPause } from "react-icons/io5";
+
 export default function Mp3Player() {
   const song = useSelector((state: getMp3Action) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
   const [audioDur, setAudioDur] = useState<any>();
   const [progress, setProgress] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timer>();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const playingAsong = () => {
     if (song?.audio) {
@@ -21,6 +23,7 @@ export default function Mp3Player() {
         if (song?.audio.ended) {
           console.log("it did end");
           song.audio.load();
+          setIsPlaying(false);
           cleanUp();
         } else {
           console.log("s");
@@ -56,7 +59,8 @@ export default function Mp3Player() {
 
   const play = () => {
     if (song?.audio) {
-      setProgress(0);
+      setIsPlaying(true);
+
       setPrAudio(song?.audio);
       playingAsong();
       song?.audio.play();
@@ -64,6 +68,7 @@ export default function Mp3Player() {
   };
   const pause = () => {
     song?.audio.pause();
+    setIsPlaying(false);
   };
 
   const cleanUp = () => {
@@ -84,9 +89,15 @@ export default function Mp3Player() {
         </div>
       </div>
       <div className="mp3Player_mid">
-        <button onClick={play}>
-          <IoPlaySharp />
-        </button>
+        {isPlaying ? (
+          <button onClick={pause}>
+            <IoPause style={{ marginLeft: 0 }}></IoPause>
+          </button>
+        ) : (
+          <button onClick={play}>
+            <IoPlaySharp />
+          </button>
+        )}
 
         <Slider
           max={audioDur ? audioDur : `${audioDur}`}
