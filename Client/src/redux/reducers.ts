@@ -18,10 +18,22 @@ export const getSpotfiy = (state = null, action: any) => {
       return state;
   }
 };
+
+interface song {
+  name: string;
+  artist: string;
+  imageUrl: string;
+  audio: HTMLAudioElement;
+}
+export interface getMp3Action {
+  type: string;
+  song?: song | null;
+}
+
 const getMp3Url = (state = null, action: any) => {
   switch (action.type) {
     case get_mp3Url.type:
-      return action.audio;
+      return action.song;
     default:
       return state;
   }
@@ -30,5 +42,5 @@ const getMp3Url = (state = null, action: any) => {
 export const rootReducer = combineReducers({
   user: getUser,
   spotfiy: getSpotfiy,
-  url: getMp3Url,
+  song: getMp3Url,
 });

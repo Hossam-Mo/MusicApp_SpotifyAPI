@@ -3,34 +3,34 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import "./mp3Player.css";
-import { LinearProgress } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider";
+import { getMp3Action } from "../../redux/reducers";
+
 export default function Mp3Player() {
-  const url = useSelector((state: any) => state.url);
+  const song = useSelector((state: any) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
   const [audioDur, setAudioDur] = useState<any>();
   const [progress, setProgress] = useState<number>(0);
-  const progressBar = useRef<HTMLInputElement>(null);
   const intervalRef = useRef<NodeJS.Timer>();
 
   const playingAsong = () => {
-    if (url) {
+    if (song?.audio) {
       cleanUp();
       intervalRef.current = setInterval(() => {
-        if (url.ended) {
+        if (song?.audio.ended) {
           console.log("it did end");
           cleanUp();
         } else {
           console.log("s");
-          setProgress(url.currentTime);
+          setProgress(song?.audio.currentTime);
         }
-      }, 1000);
+      }, 40);
     }
   };
   const progressChange = (value) => {
-    if (url) {
-      url.currentTime = value;
-      setProgress(url.currentTime);
+    if (song?.audio) {
+      song.audio.currentTime = value;
+      setProgress(song?.audio.currentTime);
     }
   };
 
@@ -41,8 +41,8 @@ export default function Mp3Player() {
   };
 
   useEffect(() => {
-    if (url) {
-      const { duration } = url;
+    if (song?.audio) {
+      const { duration } = song?.audio;
       setAudioDur(duration);
       play();
     }
@@ -50,18 +50,18 @@ export default function Mp3Player() {
       prAudio.pause();
       prAudio.load();
     }
-  }, [url]);
+  }, [song?.audio]);
 
   const play = () => {
-    if (url) {
+    if (song?.audio) {
       setProgress(0);
-      setPrAudio(url);
+      setPrAudio(song?.audio);
       playingAsong();
-      url.play();
+      song?.audio.play();
     }
   };
   const pause = () => {
-    url?.pause();
+    song?.audio.pause();
   };
 
   const cleanUp = () => {

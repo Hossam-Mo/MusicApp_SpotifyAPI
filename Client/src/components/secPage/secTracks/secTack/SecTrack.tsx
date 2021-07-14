@@ -31,7 +31,14 @@ export default function SecTrack({
     console.log(audio.srcObject);
     dispatch({
       type: get_mp3Url.type,
-      audio: preview_url ? audio : null,
+      song: preview_url
+        ? {
+            audio,
+            name,
+            image: album?.images[1].url,
+            artist: album?.artists[0].name,
+          }
+        : null,
     });
   };
 
