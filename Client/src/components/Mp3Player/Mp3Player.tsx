@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import "./mp3Player.css";
 import Slider from "@material-ui/core/Slider";
 import { getMp3Action } from "../../redux/reducers";
+import { parseJsonSourceFileConfigFileContent } from "typescript";
 
 export default function Mp3Player() {
-  const song = useSelector((state: any) => state.song);
+  const song = useSelector((state: getMp3Action) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
   const [audioDur, setAudioDur] = useState<any>();
   const [progress, setProgress] = useState<number>(0);
@@ -19,6 +20,7 @@ export default function Mp3Player() {
       intervalRef.current = setInterval(() => {
         if (song?.audio.ended) {
           console.log("it did end");
+          song.audio.load();
           cleanUp();
         } else {
           console.log("s");

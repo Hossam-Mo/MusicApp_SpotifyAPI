@@ -30,7 +30,7 @@ export interface getMp3Action {
   song?: song | null;
 }
 
-const getMp3Url = (state = null, action: any) => {
+const getMp3Url = (state = null, action: getMp3Action) => {
   switch (action.type) {
     case get_mp3Url.type:
       return action.song;
