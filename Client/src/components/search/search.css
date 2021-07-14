@@ -2,6 +2,7 @@
   flex: 1;
   color: white;
   overflow: hidden;
+  padding-bottom: 100px;
 }
 .search > h1 {
   padding: 20px;

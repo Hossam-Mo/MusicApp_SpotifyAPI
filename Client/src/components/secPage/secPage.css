@@ -2,6 +2,7 @@
   flex: 1;
   position: relative;
   overflow: hidden;
+  padding-bottom: 100px;
 }
 
 .secPage_cover {
@@ -24,7 +25,7 @@
   z-index: -1;
 }
 
-.secPage_404Page{
+.secPage_404Page {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,9 +33,8 @@
   justify-content: center;
   color: white;
 }
-.secPage_logo{
+.secPage_logo {
   width: 200px;
-margin: 50px;
-object-fit: contain;
-
+  margin: 50px;
+  object-fit: contain;
 }
