@@ -15,7 +15,7 @@ export default function Mp3Player() {
   const [progress, setProgress] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timer>();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(100);
+  const [volume, setVolume] = useState(50);
 
   const playingAsong = () => {
     if (song?.audio) {
@@ -24,6 +24,7 @@ export default function Mp3Player() {
         if (song?.audio.ended) {
           song.audio.load();
           setIsPlaying(false);
+          setProgress(0);
           cleanUp();
         } else {
           console.log("s");
@@ -33,6 +34,7 @@ export default function Mp3Player() {
     }
   };
   const progressChange = (value) => {
+    console.log(value);
     if (song?.audio) {
       song.audio.currentTime = value;
       setProgress(song?.audio.currentTime);
@@ -55,7 +57,7 @@ export default function Mp3Player() {
   const play = () => {
     if (song?.audio) {
       setIsPlaying(true);
-
+      setProgress(0);
       setPrAudio(song?.audio);
       playingAsong();
       song?.audio.play().catch((err) => {
@@ -111,7 +113,11 @@ export default function Mp3Player() {
           min={0}
           value={progress}
           onChange={(e, v) => {
-            progressChange(v);
+            console.log("v:", v);
+            let value: any = 0;
+            if (v || progress) value = v || progress;
+            console.log("value:", value);
+            if (value) progressChange(value);
           }}
           aria-labelledby="continuous-slider"
         />
