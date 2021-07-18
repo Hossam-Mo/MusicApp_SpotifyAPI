@@ -58,7 +58,9 @@ export default function Mp3Player() {
 
       setPrAudio(song?.audio);
       playingAsong();
-      song?.audio.play();
+      song?.audio.play().catch((err) => {
+        console.log(err);
+      });
     }
   };
   const pause = () => {
