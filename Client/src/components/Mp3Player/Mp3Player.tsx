@@ -52,20 +52,6 @@ export default function Mp3Player() {
     var seconds = sec - minutes * 60;
     return `${minutes}:${seconds.toFixed(0)}`;
   };
-
-  useEffect(() => {
-    if (song?.audio) {
-      const { duration } = song?.audio;
-      setAudioDur(duration);
-      play();
-      song.audio.volume = volume / 100;
-    }
-    if (prAudio) {
-      prAudio.pause();
-      prAudio.load();
-    }
-  }, [song?.audio]);
-
   const play = () => {
     if (song?.audio) {
       setIsPlaying(true);
@@ -83,6 +69,20 @@ export default function Mp3Player() {
   const cleanUp = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
+  useEffect(() => {
+    if (song?.audio) {
+      const { duration } = song?.audio;
+      setAudioDur(duration);
+      play();
+      song.audio.volume = volume / 100;
+    }
+    if (prAudio) {
+      if (prAudio != song?.audio) {
+        prAudio.pause();
+        prAudio.load();
+      }
+    }
+  }, [song?.audio]);
 
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>

@@ -28,7 +28,6 @@ export default function SecTrack({
   const play = () => {
     console.log(preview_url);
 
-    console.log(audio.srcObject);
     dispatch({
       type: get_mp3Url.type,
       song: preview_url
