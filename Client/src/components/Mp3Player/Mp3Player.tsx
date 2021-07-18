@@ -15,14 +15,13 @@ export default function Mp3Player() {
   const [progress, setProgress] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timer>();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(100);
 
   const playingAsong = () => {
-    console.log(song?.audio);
     if (song?.audio) {
       cleanUp();
       intervalRef.current = setInterval(() => {
         if (song?.audio.ended) {
-          console.log("it did end");
           song.audio.load();
           setIsPlaying(false);
           cleanUp();
@@ -40,6 +39,14 @@ export default function Mp3Player() {
     }
   };
 
+  const volumeChange = (value) => {
+    console.log(value / 100);
+    if (song?.audio) {
+      song.audio.volume = value / 100;
+      setVolume(value);
+    }
+  };
+
   const getTime = (sec) => {
     var minutes = Math.floor(sec / 60);
     var seconds = sec - minutes * 60;
@@ -51,6 +58,7 @@ export default function Mp3Player() {
       const { duration } = song?.audio;
       setAudioDur(duration);
       play();
+      song.audio.volume = volume / 100;
     }
     if (prAudio) {
       prAudio.pause();
@@ -75,10 +83,6 @@ export default function Mp3Player() {
   const cleanUp = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
-
-  useEffect(() => {
-    console.log(song);
-  }, [song]);
 
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
@@ -105,7 +109,6 @@ export default function Mp3Player() {
           min={0}
           value={progress}
           onChange={(e, v) => {
-            console.log(v);
             progressChange(v);
           }}
           aria-labelledby="continuous-slider"
@@ -125,7 +128,15 @@ export default function Mp3Player() {
       </div>
       <div className="mp3Player_end">
         <BsVolumeUp></BsVolumeUp>
-        <Slider min={0} aria-labelledby="continuous-slider"></Slider>
+        <Slider
+          value={volume}
+          min={0}
+          max={100}
+          onChange={(e, v) => {
+            volumeChange(v);
+          }}
+          aria-labelledby="continuous-slider"
+        ></Slider>
       </div>
     </div>
   );
