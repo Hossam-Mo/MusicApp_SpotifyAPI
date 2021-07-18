@@ -17,6 +17,7 @@ export default function Mp3Player() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const playingAsong = () => {
+    console.log(song?.audio);
     if (song?.audio) {
       cleanUp();
       intervalRef.current = setInterval(() => {
