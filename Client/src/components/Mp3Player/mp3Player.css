@@ -10,12 +10,17 @@
   align-items: center;
   justify-content: space-around;
   border-top: 1px solid #282828;
+  transition: opacity 0.5s ease-in-out;
+  height: 64px;
+}
+.mp3Player_op {
+  opacity: 0;
 }
 
 .mp3Player_start {
   display: flex;
   align-items: center;
-  flex: 0.25;
+  flex: 0.4;
 }
 .mp3Player_start > div > h3 {
   font-weight: 500;
@@ -73,9 +78,14 @@
 .mp3Player_end {
   display: flex;
   align-items: center;
-  flex: 0.25;
+  justify-content: center;
+  flex: 0.4;
   margin-right: 50px;
   cursor: pointer;
+}
+
+.mp3Player_end > span {
+  width: 62%;
 }
 .mp3Player_end > .MuiSlider-root {
   color: #b3b3b3;

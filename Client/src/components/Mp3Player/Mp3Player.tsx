@@ -80,7 +80,7 @@ export default function Mp3Player() {
   }, [song]);
 
   return (
-    <div className="mp3Player">
+    <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
       <div className="mp3Player_start">
         <img src={song?.imageUrl} alt={song?.name}></img>
         <div>
