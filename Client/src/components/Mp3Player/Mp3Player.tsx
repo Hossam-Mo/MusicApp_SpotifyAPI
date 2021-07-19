@@ -37,6 +37,8 @@ export default function Mp3Player() {
   const progressChange = (value) => {
     console.log(value);
     if (song?.audio) {
+      console.log(value);
+      console.log(song);
       song.audio.currentTime = value;
       setProgress(song?.audio.currentTime);
     }
@@ -83,6 +85,9 @@ export default function Mp3Player() {
   };
 
   useEffect(() => {
+    if (!song) {
+      cleanUp();
+    }
     if (song?.audio) {
       const { duration } = song?.audio;
       setAudioDur(duration);
@@ -99,6 +104,10 @@ export default function Mp3Player() {
       }
     }
   }, [song?.audio, prAudio]);
+
+  useEffect(() => {
+    console.log(progress);
+  }, [progress]);
 
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
@@ -130,9 +139,9 @@ export default function Mp3Player() {
           onChange={(e, v) => {
             console.log("v:", v);
             let value: any = 0;
-            if (v || progress) value = v || progress;
+            if (v || progress) value = v || 0;
             console.log("value:", value);
-            if (value) progressChange(value);
+            if (value != undefined || value != null) progressChange(value);
           }}
           aria-labelledby="continuous-slider"
         />
