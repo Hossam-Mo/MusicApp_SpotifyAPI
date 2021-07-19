@@ -7,7 +7,6 @@ import Slider from "@material-ui/core/Slider";
 import { getMp3Action } from "../../redux/reducers";
 import { BsVolumeUp } from "react-icons/bs";
 import { IoPlaySharp, IoPause } from "react-icons/io5";
-
 export default function Mp3Player() {
   const song = useSelector((state: getMp3Action) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
@@ -55,13 +54,18 @@ export default function Mp3Player() {
   };
   const play = () => {
     if (song?.audio) {
-      setIsPlaying(true);
-      setProgress(0);
-      setPrAudio(song?.audio);
-      playingAsong();
-      song?.audio.play().catch((err) => {
-        console.log(err);
-      });
+      song?.audio
+        .play()
+        .then(() => {
+          console.log("dsads");
+          setIsPlaying(true);
+          setProgress(0);
+          setPrAudio(song?.audio);
+          playingAsong();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
   const pause = () => {
@@ -79,13 +83,18 @@ export default function Mp3Player() {
       play();
       song.audio.volume = volume / 100;
     }
+  }, [song?.audio]);
+
+  useEffect(() => {
     if (prAudio) {
       if (prAudio != song?.audio) {
+        console.log(prAudio.paused);
+        console.log(prAudio);
         prAudio.pause();
         prAudio.load();
       }
     }
-  }, [song?.audio]);
+  }, [song?.audio, prAudio]);
 
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
