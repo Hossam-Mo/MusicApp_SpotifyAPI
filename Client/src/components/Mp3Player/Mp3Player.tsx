@@ -17,6 +17,7 @@ export default function Mp3Player() {
   const [volume, setVolume] = useState(50);
 
   const playingAsong = () => {
+    console.log("number started  counting");
     if (song?.audio) {
       cleanUp();
       intervalRef.current = setInterval(() => {
@@ -72,6 +73,7 @@ export default function Mp3Player() {
   };
 
   const pause = () => {
+    cleanUp();
     song?.audio.pause();
     setIsPlaying(false);
   };
@@ -92,8 +94,6 @@ export default function Mp3Player() {
   useEffect(() => {
     if (prAudio) {
       if (prAudio != song?.audio) {
-        console.log(prAudio.paused);
-        console.log(prAudio);
         prAudio.pause();
         prAudio.load();
       }
