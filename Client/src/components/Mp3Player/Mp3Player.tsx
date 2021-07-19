@@ -32,6 +32,7 @@ export default function Mp3Player() {
       }, 40);
     }
   };
+
   const progressChange = (value) => {
     console.log(value);
     if (song?.audio) {
@@ -52,6 +53,7 @@ export default function Mp3Player() {
     var seconds = sec - minutes * 60;
     return `${minutes}:${seconds.toFixed(0)}`;
   };
+
   const play = () => {
     if (song?.audio) {
       song?.audio
@@ -68,6 +70,7 @@ export default function Mp3Player() {
         });
     }
   };
+
   const pause = () => {
     song?.audio.pause();
     setIsPlaying(false);
@@ -76,6 +79,7 @@ export default function Mp3Player() {
   const cleanUp = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
+
   useEffect(() => {
     if (song?.audio) {
       const { duration } = song?.audio;
