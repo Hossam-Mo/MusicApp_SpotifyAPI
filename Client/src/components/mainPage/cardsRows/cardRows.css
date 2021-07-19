@@ -39,6 +39,7 @@
 .cardRows_cards::-webkit-scrollbar {
   width: 10px;
   height: 5px;
+  background-color: transparent;
 }
 
 .cardRows_cards::-webkit-scrollbar-track {
