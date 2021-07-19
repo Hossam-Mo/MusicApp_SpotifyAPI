@@ -59,7 +59,7 @@ export default function Mp3Player() {
         .then(() => {
           console.log("dsads");
           setIsPlaying(true);
-          setProgress(0);
+
           setPrAudio(song?.audio);
           playingAsong();
         })
