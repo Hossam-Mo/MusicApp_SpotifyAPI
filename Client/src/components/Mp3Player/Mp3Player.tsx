@@ -10,7 +10,7 @@ import { IoPlaySharp, IoPause } from "react-icons/io5";
 export default function Mp3Player() {
   const song = useSelector((state: getMp3Action) => state.song);
   const [prAudio, setPrAudio] = useState<HTMLAudioElement>();
-  const [audioDur, setAudioDur] = useState<any>();
+  const [audioDur, setAudioDur] = useState<any>(0);
   const [progress, setProgress] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timer>();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -35,7 +35,6 @@ export default function Mp3Player() {
   };
 
   const progressChange = (value) => {
-    console.log(value);
     if (song?.audio) {
       console.log(value);
       console.log(song);
@@ -85,12 +84,12 @@ export default function Mp3Player() {
   };
 
   useEffect(() => {
-    if (!song) {
-      cleanUp();
-    }
+    if (!song) cleanUp();
+
     if (song?.audio) {
       const { duration } = song?.audio;
-      setAudioDur(duration);
+      if (duration) setAudioDur(duration || 30.040816);
+
       play();
       song.audio.volume = volume / 100;
     }
@@ -104,10 +103,6 @@ export default function Mp3Player() {
       }
     }
   }, [song?.audio, prAudio]);
-
-  useEffect(() => {
-    console.log(progress);
-  }, [progress]);
 
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
@@ -137,11 +132,8 @@ export default function Mp3Player() {
           min={0}
           value={progress}
           onChange={(e, v) => {
-            console.log("v:", v);
-            let value: any = 0;
-            if (v || progress) value = v || 0;
-            console.log("value:", value);
-            if (value != undefined || value != null) progressChange(value);
+            console.log(v);
+            if (v) progressChange(v);
           }}
           aria-labelledby="continuous-slider"
         />
