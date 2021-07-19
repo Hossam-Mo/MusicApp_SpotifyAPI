@@ -48,6 +48,16 @@ export default function SecTrack({
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
+  const shortString = (str: string | undefined) => {
+    if (str) {
+      if (str.length > 17) {
+        let strShortened = str.slice(0, 16);
+
+        return `${strShortened}...`;
+      }
+      return str;
+    }
+  };
   return (
     <div onClick={play} className="secTrack">
       <div className="secTrack_name">
@@ -55,12 +65,12 @@ export default function SecTrack({
         <IoPlaySharp></IoPlaySharp>
         <img src={album?.images[1].url} alt={album?.name}></img>
         <div>
-          <h3>{name}</h3>
+          <h3>{shortString(name)}</h3>
           {prames.type && <h3>{album?.artists[0].name}</h3>}
         </div>
       </div>
       <div className="secTrack_mid">
-        <p>{album?.name}</p>
+        <p>{shortString(album?.name)}</p>
       </div>
       <div className="secTrack_mid">
         <p>{album?.release_date}</p>

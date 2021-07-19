@@ -104,15 +104,26 @@ export default function Mp3Player() {
     }
   }, [song?.audio, prAudio]);
 
+  const shortString = (str: string | undefined) => {
+    if (str) {
+      if (str.length > 17) {
+        let strShortened = str.slice(0, 16);
+
+        return `${strShortened}...`;
+      }
+      return str;
+    }
+  };
+
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
       <div className="mp3Player_start">
         <img
           src={song?.imageUrl || "/asset/defulatimage.png"}
-          alt={song?.name}
+          alt={shortString(song?.name)}
         ></img>
         <div>
-          <h3>{song?.name}</h3>
+          <h3>{shortString(song?.name)}</h3>
           <p>{song?.artist}</p>
         </div>
       </div>

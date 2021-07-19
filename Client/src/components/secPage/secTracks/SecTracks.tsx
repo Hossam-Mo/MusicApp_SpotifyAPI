@@ -24,6 +24,7 @@ interface params {
 
 export default function SecTracks({ tracks, lists }: props) {
   const params = useParams<params>();
+
   return (
     <div className="secTracks">
       {params.type != "category" && tracks?.length ? <SecAdd></SecAdd> : null}
