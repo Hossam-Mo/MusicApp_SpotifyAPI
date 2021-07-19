@@ -42,7 +42,6 @@ export default function Mp3Player() {
   };
 
   const volumeChange = (value) => {
-    console.log(value / 100);
     if (song?.audio) {
       song.audio.volume = value / 100;
       setVolume(value);
@@ -91,7 +90,10 @@ export default function Mp3Player() {
   return (
     <div className={song ? "mp3Player" : `mp3Player ${"mp3Player_op"}`}>
       <div className="mp3Player_start">
-        <img src={song?.imageUrl} alt={song?.name}></img>
+        <img
+          src={song?.imageUrl || "/asset/defulatimage.png"}
+          alt={song?.name}
+        ></img>
         <div>
           <h3>{song?.name}</h3>
           <p>{song?.artist}</p>
