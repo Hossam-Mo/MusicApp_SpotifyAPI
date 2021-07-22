@@ -8,8 +8,6 @@ import SpotifyWebApi from "spotify-web-api-node";
 import Login from "./components/login/Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Leftslide from "./components/leftslide/Leftslide";
-import SeeAll from "./components/seeAll/SeeAll";
-import Search from "./components/search/Search";
 import Mp3Player from "./components/Mp3Player/Mp3Player";
 import Loading from "./components/loading/Loading";
 
@@ -20,7 +18,8 @@ const Spotfiy = new SpotifyWebApi({
 
 const SecPage = React.lazy(() => import("./components/secPage/SecPage"));
 const MainPage = React.lazy(() => import("./components/mainPage/MainPage"));
-
+const SeeAll = React.lazy(() => import("./components/seeAll/SeeAll"));
+const Search = React.lazy(() => import("./components/search/Search"));
 function App() {
   const token = useAuth();
   const dispatch = useDispatch();
