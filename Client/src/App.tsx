@@ -1,5 +1,4 @@
 import "./App.css";
-import React from "react";
 import { useEffect, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import useAuth from "./hooks/useAuth";
@@ -16,10 +15,10 @@ const Spotfiy = new SpotifyWebApi({
   clientId: "4451beba5b2c42a4a9dbb72c109d2de5",
 });
 
-const SecPage = React.lazy(() => import("./components/secPage/SecPage"));
-const MainPage = React.lazy(() => import("./components/mainPage/MainPage"));
-const SeeAll = React.lazy(() => import("./components/seeAll/SeeAll"));
-const Search = React.lazy(() => import("./components/search/Search"));
+const SecPage = lazy(() => import("./components/secPage/SecPage"));
+const MainPage = lazy(() => import("./components/mainPage/MainPage"));
+const SeeAll = lazy(() => import("./components/seeAll/SeeAll"));
+const Search = lazy(() => import("./components/search/Search"));
 function App() {
   const token = useAuth();
   const dispatch = useDispatch();
