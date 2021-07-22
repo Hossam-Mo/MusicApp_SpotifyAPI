@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function useSecPage(id: string, type: string) {
-  const [info, setInfo] = useState<any>();
-  const [tracks, setTracks] = useState();
-  const [albums, setAlbums] = useState();
-  const [relatedArtists, setRelatedArtists] = useState();
-  const [categoryLists, setCategoryLists] = useState();
+  const [info, setInfo] = useState<any>(null);
+  const [tracks, setTracks] = useState(null);
+  const [albums, setAlbums] = useState(null);
+  const [relatedArtists, setRelatedArtists] = useState(null);
+  const [categoryLists, setCategoryLists] = useState(null);
   const [loading, setLoading] = useState(true);
   const user = useSelector((state: any) => state.user);
   const Spotfiy = useSelector((state: any) => {
@@ -121,6 +121,7 @@ export default function useSecPage(id: string, type: string) {
 
     return () => {
       setInfo(null);
+      setTracks(null);
     };
   }, [id, type]);
 

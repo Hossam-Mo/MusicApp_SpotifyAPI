@@ -14,7 +14,7 @@ interface rows {
 }
 
 interface props {
-  tracks?: tracks[];
+  tracks?: tracks[] | null;
   lists?: rows[] | null;
 }
 interface params {
