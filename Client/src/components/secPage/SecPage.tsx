@@ -1,7 +1,10 @@
+import { setMaxListeners } from "process";
+import { useState } from "react";
 import { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 import useSecPage from "../../hooks/useSecPage";
+import Loading from "../loading/Loading";
 import SecCover from "./secCover/SecCover";
 import "./secPage.css";
 import SecTracks from "./secTracks/SecTracks";
@@ -25,7 +28,9 @@ export default function SecPage() {
 
   return (
     <div className="secPage">
-      {lists.info ? (
+      {lists === null ? (
+        <Loading />
+      ) : lists?.info ? (
         <div>
           {" "}
           <div className="secPage_background"></div>

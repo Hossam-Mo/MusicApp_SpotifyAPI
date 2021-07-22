@@ -10,12 +10,12 @@ import { useParams } from "react-router-dom";
 
 interface rows {
   name: string;
-  list: album[] | artists[] | lists[] | undefined;
+  list: album[] | artists[] | lists[] | undefined | null;
 }
 
 interface props {
   tracks?: tracks[];
-  lists?: rows[];
+  lists?: rows[] | null;
 }
 interface params {
   type: string;

@@ -8,6 +8,7 @@ export default function useSecPage(id: string, type: string) {
   const [albums, setAlbums] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
   const [categoryLists, setCategoryLists] = useState();
+  const [loading, setLoading] = useState(true);
   const user = useSelector((state: any) => state.user);
   const Spotfiy = useSelector((state: any) => {
     return state.spotfiy;
@@ -19,6 +20,7 @@ export default function useSecPage(id: string, type: string) {
         Spotfiy.getArtist(id)
           .then((res) => {
             setInfo(res.body);
+            setLoading(false);
           })
           .catch((err) => {
             console.log(err);
@@ -57,6 +59,7 @@ export default function useSecPage(id: string, type: string) {
             });
 
             setInfo(res.body);
+            setLoading(false);
             setTracks(newTracks);
           })
           .catch((err) => {
@@ -66,7 +69,7 @@ export default function useSecPage(id: string, type: string) {
         Spotfiy.getPlaylist(id)
           .then((res) => {
             setInfo(res.body);
-
+            setLoading(false);
             let newTrack = res.body.tracks.items.filter((item) => {
               if (item.track.album.images.length && item.track.id) {
                 return item;
@@ -101,6 +104,7 @@ export default function useSecPage(id: string, type: string) {
                 },
               ],
             });
+            setLoading(false);
           })
           .catch((err) => {
             console.log(err);
@@ -114,7 +118,13 @@ export default function useSecPage(id: string, type: string) {
           });
       }
     }
+
+    return () => {
+      setInfo(null);
+    };
   }, [id, type]);
+
+  if (!info) return null;
 
   return {
     info,
@@ -127,6 +137,6 @@ export default function useSecPage(id: string, type: string) {
           ]
         : type.toLowerCase() === "category"
         ? [{ name: "PlayLists", list: categoryLists }]
-        : undefined,
+        : null,
   };
 }
