@@ -13,6 +13,7 @@ import SeeAll from "./components/seeAll/SeeAll";
 //import SecPage from "./components/secPage/SecPage";
 import Search from "./components/search/Search";
 import Mp3Player from "./components/Mp3Player/Mp3Player";
+import Loading from "./components/loading/Loading";
 
 const code = new URLSearchParams(window.location.search).get("code");
 const Spotfiy = new SpotifyWebApi({
@@ -64,7 +65,7 @@ function App() {
       {code ? (
         <Router>
           <Leftslide></Leftslide>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading />}>
             <Switch>
               <Route exact path="/seeAll/:pageName/:id?">
                 <SeeAll></SeeAll>
