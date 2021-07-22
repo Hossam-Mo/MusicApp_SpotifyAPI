@@ -22,9 +22,6 @@ export default function SecPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [prames]);
-  useEffect(() => {
-    console.log(lists);
-  }, [lists]);
 
   return (
     <div className="secPage">
