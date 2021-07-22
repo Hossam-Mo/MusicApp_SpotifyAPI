@@ -78,7 +78,8 @@ function App() {
                 <Search></Search>
               </Route>
               <Route exact path="/">
-                <MainPage></MainPage>
+                {/* <MainPage></MainPage> */}
+                <Loading />
               </Route>
             </Switch>
           </Suspense>
