@@ -6,11 +6,9 @@ import useAuth from "./hooks/useAuth";
 import { get_spotfiy, get_user } from "./redux/actionTypes";
 import SpotifyWebApi from "spotify-web-api-node";
 import Login from "./components/login/Login";
-import MainPage from "./components/mainPage/MainPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Leftslide from "./components/leftslide/Leftslide";
 import SeeAll from "./components/seeAll/SeeAll";
-//import SecPage from "./components/secPage/SecPage";
 import Search from "./components/search/Search";
 import Mp3Player from "./components/Mp3Player/Mp3Player";
 import Loading from "./components/loading/Loading";
@@ -21,6 +19,7 @@ const Spotfiy = new SpotifyWebApi({
 });
 
 const SecPage = React.lazy(() => import("./components/secPage/SecPage"));
+const MainPage = React.lazy(() => import("./components/mainPage/MainPage"));
 
 function App() {
   const token = useAuth();
@@ -78,8 +77,7 @@ function App() {
                 <Search></Search>
               </Route>
               <Route exact path="/">
-                {/* <MainPage></MainPage> */}
-                <Loading />
+                <MainPage></MainPage>
               </Route>
             </Switch>
           </Suspense>
