@@ -39,3 +39,8 @@
     font-size: 14px;
   }
 }
+@media (max-width: 680px) {
+  .leftContant > p {
+    font-size: 12px;
+  }
+}
