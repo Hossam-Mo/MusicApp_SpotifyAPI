@@ -70,7 +70,7 @@ export default function Leftslide() {
   return (
     <div className="leftslide">
       <div className="leftslide_main">
-        <Link to="/">
+        <Link className="leftslide_logoLink" to="/">
           {/* <img className="leftslid_logo" src="/asset/logo.png" alt="Logo"></img> */}
           <svg viewBox="0 0 1134 340" className="leftslid_logo">
             <title>Spotify</title>
@@ -88,8 +88,10 @@ export default function Leftslide() {
         <Link to="/search">
           <LeftContant Icon={AiOutlineSearch} contant="Search"></LeftContant>
         </Link>
+        <Link to="/">
+          <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
+        </Link>
 
-        <LeftContant Icon={VscLibrary} contant="Your library"></LeftContant>
         <LeftContant
           Icon={IoAdd}
           contant="Add your list"

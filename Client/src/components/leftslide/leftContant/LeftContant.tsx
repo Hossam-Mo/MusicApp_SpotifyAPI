@@ -1,4 +1,3 @@
-import React from "react";
 import "./leftContant.css";
 interface props {
   Icon: any;
@@ -17,7 +16,9 @@ export default function LeftContant({
   return (
     <div
       onClick={onClick}
-      className={`leftContant ${marginTop && "leftContantTop"}`}
+      className={`leftContant ${marginTop && "leftContantTop"} ${
+        contant == "Your favorite" && "leftContantdelete"
+      }`}
     >
       <Icon className="leftContant_icon"></Icon>
       <p>{contant}</p>

@@ -29,6 +29,13 @@
 
 @media (max-width: 1000px) {
   .leftContantTop {
-    margin-top: 0;
+    margin-top: 5px;
+    display: none;
+  }
+  .leftContantdelete {
+    display: none;
+  }
+  .leftContant > p {
+    font-size: 14px;
   }
 }
