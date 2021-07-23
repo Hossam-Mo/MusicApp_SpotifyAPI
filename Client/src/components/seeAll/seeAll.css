@@ -4,7 +4,6 @@
   gap: 20px;
   padding: 20px;
   min-height: 100vh;
-  padding-bottom: 150px;
 }
 .seeAll > a:nth-child(1) {
   flex: 1 1 40%;
