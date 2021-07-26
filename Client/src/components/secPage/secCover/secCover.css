@@ -28,3 +28,22 @@
 .secCover_releseDate {
   margin: 10px 0;
 }
+
+@media (max-width: 1000px) {
+  .secCover {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .secCover_contant {
+    padding: 20px;
+    align-self: flex-start;
+  }
+  .secCover_contant > h3 {
+    font-size: 11px;
+  }
+  .secCover_contant > h1 {
+    font-size: 17px;
+  }
+}
