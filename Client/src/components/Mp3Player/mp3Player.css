@@ -105,3 +105,32 @@
 .mp3Player_end:hover > .MuiSlider-root {
   color: #2cba5f;
 }
+
+@media (max-width: 780px) {
+  .mp3Player_start > div > h3 {
+    font-size: 14px;
+  }
+  .mp3Player_start > div > p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mp3Player {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .mp3Player_end {
+    display: none;
+  }
+  .mp3Player_start > img {
+    width: 40px;
+    height: 40px;
+  }
+  .mp3Player_start > div > h3 {
+    font-size: 12px;
+  }
+  .mp3Player_start > div > p {
+    font-size: 9px;
+  }
+}
