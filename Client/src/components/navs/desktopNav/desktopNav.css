@@ -49,3 +49,17 @@
   font-size: 15px;
   font-weight: 400;
 }
+
+@media (max-width: 1000px) {
+  .desktopNav {
+    top: 82px;
+  }
+}
+@media (max-width: 500px) {
+  .desktopNav {
+    justify-content: center;
+  }
+  .desktopNav_user {
+    display: none;
+  }
+}
