@@ -24,10 +24,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("its working");
-  }, []);
-
-  useEffect(() => {
     if (token) {
       Spotfiy.setAccessToken(token);
       dispatch({
